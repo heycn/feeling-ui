@@ -21,9 +21,16 @@
   },
   "homepage": "https://github.com/heycn/flow-ui#readme",
   "dependencies": {
-    "vue": "^2.5.16"
+    "vue": "^2.5.16",
+    "vue-hot-reload-api": "^2.3.4"
   },
   "devDependencies": {
-    "parcel-bundler": "^1.9.2"
+    "@vue/component-compiler-utils": "^3.3.0",
+    "parcel-bundler": "^1.9.2",
+    "sass": "^1.49.7",
+    "vue-template-compiler": "^2.6.14"
+  },
+  "alias": {
+    "vue": "./node_modules/vue/dist/vue.common.js"
   }
 }
