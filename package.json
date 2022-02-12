@@ -22,5 +22,8 @@
   "homepage": "https://github.com/heycn/flow-ui#readme",
   "dependencies": {
     "vue": "^2.5.16"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.9.2"
   }
 }
