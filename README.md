@@ -4,6 +4,13 @@
 
 使用本框架前，请在 CSS 中开启 border-box
 
-```
+```css
 * {box-sizing: border-box;}
+```
+
+## 预览
+
+```bash
+npx parcel index.html
+parcel index.html --no-cache
 ```
