@@ -8,9 +8,8 @@
 * {box-sizing: border-box;}
 ```
 
-## 预览
+## 开发
 
 ```bash
-parcel index.html
-parcel index.html --no-cache
+npm start
 ```
