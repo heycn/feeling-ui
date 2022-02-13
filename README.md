@@ -18,15 +18,27 @@ https://img.shields.io/npm/v/feeling-ui
 
 ## 开发
 
-```bash
-# 开发预览
-npm start
+1. 安装依赖
 
-# 单元测试(只测一次)
+```bash
+npm install
+```
+
+2. 启动 server
+
+```bash
+npm start
+```
+
+3. 单元测试(只测一次)
+
+```bash
 npm run test
 
 # 运行一次，每次保存都会测试，但是 window 上有 BUG
+
 npm run dev-test
+
 ```
 
 ## 文档
@@ -36,3 +48,7 @@ npm run dev-test
 ## 联系方式
 
 ## 贡献代码
+
+```
+
+```
