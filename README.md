@@ -19,6 +19,6 @@ npm start
 # 单元测试(只测一次)
 npm run test
 
-# TravisCI 持续集成
+# 运行一次，每次保存都会测试，但是 window 上有 BUG
 npm run dev-test
 ```
