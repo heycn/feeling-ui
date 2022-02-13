@@ -1,45 +1,53 @@
 <!DOCTYPE html>
 <html lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-  <meta
-    name="viewport"
-    content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"
-  />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-  <title>Flow UI - 一个不太一样的 UI 框架</title>
-  <style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Flow UI - 一个不太一样的 UI 框架</title>
+    <style>
       * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
 
       :root {
-          --button-height: 32px;
-          --font-size: 14px;
-          --button-bg: white;
-          --button-active-bg: #eee;
-          --border-radius: 4px;
-          --color: #333;
-          --border-color: #999;
-          --border-color-hover: #666;
+        --button-height: 32px;
+        --font-size: 14px;
+        --button-bg: white;
+        --button-active-bg: #eee;
+        --border-radius: 4px;
+        --color: #333;
+        --border-color: #999;
+        --border-color-hover: #666;
       }
 
       #app {
-          margin: 20px;
+        margin: 20px;
       }
 
       body {
-          font-size: var(--font-size);
+        font-size: var(--font-size);
       }
-  </style>
-
-</head>
-<body>
-<div id="app">
-  <f-button></f-button>
-</div>
-<script src="./src/app.js"></script>
-</body>
+    </style>
+    <style>
+      .icon {
+        width: 1em;
+        height: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <f-button>按钮</f-button>
+      <f-button icon="add">添加</f-button>
+      <f-button icon="add" icon-position="right">添加</f-button>
+    </div>
+    <script src="./src/app.js"></script>
+    <script src="//at.alicdn.com/t/font_3179847_ikufurud3dp.js"></script>
+  </body>
 </html>
