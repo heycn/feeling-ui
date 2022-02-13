@@ -2,7 +2,7 @@
   "name": "feeling-ui",
   "version": "0.0.1",
   "description": "这是一个不太一样的UI框架",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "start": "parcel index.html --no-cache",
     "dev-test": "parcel watch test/* --no-cache & karma start",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/heycn/flow-ui.git"
+    "url": "git+https://github.com/heycn/feeling-ui.git"
   },
   "keywords": [
     "vue",
@@ -19,9 +19,9 @@
   "author": "heycn",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/heycn/flow-ui/issues"
+    "url": "https://github.com/heycn/feeling-ui/issues"
   },
-  "homepage": "https://github.com/heycn/flow-ui#readme",
+  "homepage": "https://github.com/heycn/feeling-ui#readme",
   "dependencies": {
     "vue": "^2.5.16",
     "vue-hot-reload-api": "^2.3.4"
