@@ -38,8 +38,9 @@
   <body>
     <div id="app">
       <f-button>按钮</f-button>
-      <f-button icon="like">点赞</f-button>
-      <f-button icon="download" icon-position="right">下载</f-button>
+      <f-button icon="like" :loading="loading3" @click="loading3=!loading3">点赞</f-button>
+      <f-button icon="download" icon-position="right" :loading="loading2" @click="loading2=!loading2">下载</f-button>
+      <f-button :loading="loading1" @click="loading1 = !loading1">点击加载</f-button>
     </div>
     <script src="./src/app.js"></script>
     <script src="//at.alicdn.com/t/font_3179847_hqhrap5ffw.js"></script>
