@@ -11,6 +11,6 @@
 ## 预览
 
 ```bash
-npx parcel index.html
+parcel index.html
 parcel index.html --no-cache
 ```
