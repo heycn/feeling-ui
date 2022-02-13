@@ -9,7 +9,11 @@
 </template>
 
 <script>
+  import Icon from './icon.vue'
   export default {
+    components: {
+      'f-icon': Icon
+    },
     props: {
       icon: {},
       loading: {
