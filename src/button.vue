@@ -1,6 +1,7 @@
 <template>
   <button class="f-button" :class="{ [`icon-${iconPosition}`]: true }">
     <f-icon class="icon" v-if="icon" :name="icon" />
+    <f-icon class="loading" name="loading"></f-icon>
     <div class="content">
       <slot />
     </div>
@@ -24,6 +25,15 @@
 </script>
 
 <style lang="scss">
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
   .f-button {
     font-size: var(--font-size);
     height: var(--button-height);
@@ -66,6 +76,10 @@
       > .content {
         order: 1;
       }
+    }
+
+    .loading {
+      animation: spin 1.25s infinite linear;
     }
   }
 </style>
