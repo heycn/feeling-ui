@@ -25,7 +25,7 @@ const expect = chai.expect
 try {
   // 单元测试
   {
-    // 测试按钮含有 icon
+    ;('可以设置 icon')
     const Constructor = Vue.extend(Button)
     const vm = new Constructor({
       propsData: {
@@ -90,17 +90,17 @@ try {
   {
     // mock
     const Constructor = Vue.extend(Button)
-    const vn = new Constructor({
+    const vm = new Constructor({
       propsData: {
         icon: 'add'
       }
     })
-    vn.$mount()
+    vm.$mount()
     let spy = chai.spy(function () {})
 
-    vn.$on('click', spy)
+    vm.$on('click', spy)
     // 希望这个函数被执行
-    let button = vn.$el
+    let button = vm.$el
     button.click()
     expect(spy).to.have.been.called()
   }

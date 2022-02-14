@@ -87,7 +87,7 @@
     }
 
     .loading {
-      animation: spin 1.25s infinite linear;
+      animation: spin 1.5s infinite linear;
     }
   }
 </style>
