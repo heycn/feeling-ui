@@ -1,12 +1,13 @@
 {
   "name": "feeling-ui",
-  "version": "0.0.3",
+  "version": "0.0.6",
   "description": "这是一个不太一样的UI框架",
   "main": "dist/index.js",
   "scripts": {
     "start": "parcel index.html --no-cache",
     "dev-test": "parcel watch test/* --no-cache & karma start",
-    "test": "parcel build test/* --no-cache --no-minify && karma start --single-run"
+    "test": "parcel build test/* --no-cache --no-minify && karma start --single-run",
+    "build": "npx parcel build index.js --no-cache --no-minify"
   },
   "repository": {
     "type": "git",
