@@ -30,9 +30,10 @@ npm install
 npm start
 ```
 
-3. 单元测试(只测一次)
+3. 单元测试
 
 ```bash
+# 只能测一次
 npm run test
 
 # 运行一次，每次保存都会测试，但是 window 上有 BUG
@@ -48,7 +49,3 @@ npm run dev-test
 ## 联系方式
 
 ## 贡献代码
-
-```
-
-```
