@@ -27,7 +27,7 @@ npm install
 2. 启动 server
 
 ```bash
-npm start
+npm run start
 ```
 
 3. 单元测试
