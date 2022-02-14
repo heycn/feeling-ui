@@ -1,6 +1,6 @@
-# Feeling UI - 一个不太一样的 UI 框架
+<h1 align="center">Feeling UI
 
-https://img.shields.io/npm/v/feeling-ui
+一个不太一样的 UI 组件库</h1>
 
 ## 介绍
 
