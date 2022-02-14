@@ -43,6 +43,8 @@
     <div id="app">
       <div class="box">
         <f-input v-model="message"></f-input>
+        <p>{{message}}</p>
+        <button @click="message+=1">+1</button>
       </div>
       <div style="padding: 20px" />
       <f-button>按钮</f-button>
