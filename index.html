@@ -42,12 +42,7 @@
   <body>
     <div id="app">
       <div class="box">
-        <f-input value="输入框"></f-input>
-        <f-input value="disabled" disabled></f-input>
-        <f-input value="readonly" readonly></f-input>
-      </div>
-      <div class="box">
-        <f-input value="" error="用户名不能为空"></f-input>
+        <f-input value="" @change="inputChange"></f-input>
       </div>
       <div style="padding: 20px" />
       <f-button>按钮</f-button>
