@@ -7,11 +7,12 @@
 <script>
   import './svg'
   export default {
+    name: 'FeelIcon',
     props: ['name']
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .f-icon {
     width: 1em;
     height: 1em;

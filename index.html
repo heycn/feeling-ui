@@ -33,19 +33,32 @@
         font-size: var(--font-size);
       }
     </style>
+    <style>
+      .box {
+        padding: 20px;
+      }
+    </style>
   </head>
   <body>
     <div id="app">
+      <div class="box">
+        <f-input value="输入框"></f-input>
+        <f-input value="disabled" disabled></f-input>
+        <f-input value="readonly" readonly></f-input>
+      </div>
+      <div class="box">
+        <f-input value="" error="用户名不能为空"></f-input>
+      </div>
+      <div style="padding: 20px" />
       <f-button>按钮</f-button>
-      <f-button icon="like" :loading="loading3" @click="loading3=!loading3">点赞</f-button>
+      <f-button icon="like">点赞</f-button>
       <f-button icon="download" icon-position="right" :loading="loading2" @click="loading2=!loading2">下载</f-button>
-      <f-button :loading="loading1" @click="loading1 = !loading1">点击加载</f-button>
+      <f-button :loading="loading1" @click="loading1 = !loading1">加载</f-button>
       <f-button-group>
         <f-button icon="left">上一页</f-button>
         <f-button>更多</f-button>
         <f-button icon="right" icon-position="right">下一页</f-button>
       </f-button-group>
-      <div id="test"></div>
     </div>
     <script src="./src/app.js"></script>
   </body>
