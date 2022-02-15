@@ -4,6 +4,12 @@
   </div>
 </template>
 
+<script>
+  export default {
+    name: 'FeelSider'
+  }
+</script>
+
 <style lang="scss" scoped>
   .sider {
   }

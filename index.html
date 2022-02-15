@@ -28,32 +28,29 @@
         --border-color-hover: #666;
       }
       #app {
-        margin: 20px;
       }
       body {
         font-size: var(--font-size);
-      }
-    </style>
-    <style>
-      .box {
-        margin: 20px;
       }
     </style>
   </head>
   <body>
     <style>
       .demo {
-        background: #ddd;
         border: 1px solid #666;
-        height: 100px;
+        min-height: 100px;
       }
     </style>
 
     <div id="app">
-      <f-row gutter="20">
-        <f-col span="12"></f-col>
-        <f-col span="12"></f-col>
-      </f-row>
+      <f-layout style="height: 100vh">
+        <f-sider class="demo">sider</f-sider>
+        <f-layout>
+          <f-header class="demo">header</f-header>
+          <f-content class="demo">content</f-content>
+          <f-footer class="demo">footer</f-footer>
+        </f-layout>
+      </f-layout>
     </div>
     <script src="./src/app.js"></script>
   </body>

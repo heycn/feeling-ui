@@ -4,6 +4,12 @@
   </div>
 </template>
 
+<script>
+  export default {
+    name :FeelHeader
+  }
+</script>
+
 <style lang="scss" scoped>
   .header {
   }
