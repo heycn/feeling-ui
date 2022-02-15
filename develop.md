@@ -9,7 +9,7 @@ npm install
 ## 启动 server
 
 ```bash
-npm run start
+npm start
 ```
 
 ## 单元测试
