@@ -12,7 +12,7 @@
         type: [Number, String]
       }
     },
-    components: {
+    computed: {
       rowStyle() {
         let { gutter } = this
         return { marginLeft: -gutter / 2 + 'px', marginRight: -gutter / 2 + 'px' }
@@ -29,6 +29,5 @@
 <style lang="scss" scoped>
   .row {
     display: flex;
-    margin: 0 -10px;
   }
 </style>
