@@ -40,15 +40,31 @@
         border: 1px solid #666;
         min-height: 100px;
       }
+      .sider {
+        background: #333;
+        width: 150px;
+      }
+      .sider.slide-enter,
+      .sider.slide-leave-to {
+        margin-left: -150px;
+      }
+      .header {
+        background: #999;
+        height: 100px;
+      }
+      .footer {
+        background: #ccc;
+        height: 50px;
+      }
     </style>
 
     <div id="app">
       <f-layout style="height: 100vh">
-        <f-sider class="demo">sider</f-sider>
+        <f-sider>sider</f-sider>
         <f-layout>
-          <f-header class="demo">header</f-header>
-          <f-content class="demo">content</f-content>
-          <f-footer class="demo">footer</f-footer>
+          <f-header>header</f-header>
+          <f-content>content</f-content>
+          <f-footer>footer</f-footer>
         </f-layout>
       </f-layout>
     </div>

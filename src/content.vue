@@ -6,7 +6,7 @@
 
 <script>
   export default {
-    name: FeelContent
+    name: 'FeelContent'
   }
 </script>
 
