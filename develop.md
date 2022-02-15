@@ -23,3 +23,19 @@ npm run test
 npm run dev-test
 
 ```
+
+## 发布 npm
+
+```bash
+
+# 切换 npm 源
+
+# 在根目录下的 .npmrc 文件里注销以下这行代码，否则就会发布到淘宝源上去了
+
+`registry=https://registry.npm.taobao.org`
+
+# 执行
+
+npm publish
+
+```
