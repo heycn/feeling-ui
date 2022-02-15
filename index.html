@@ -46,23 +46,8 @@
     <div id="app">
       <div style="border: 1px solid black">
         <f-row gutter="20">
-          <f-col>1</f-col>
-          <f-col>2</f-col>
-        </f-row>
-        <f-row gutter="20">
-          <f-col>1</f-col>
-          <f-col>2</f-col>
-          <f-col>3</f-col>
-        </f-row>
-        <f-row gutter="20">
-          <f-col>1</f-col>
-          <f-col>2</f-col>
-          <f-col>3</f-col>
-          <f-col>4</f-col>
-        </f-row>
-        <f-row gutter="20">
-          <f-col span="2">1</f-col>
-          <f-col span="20" offset="2">11</f-col>
+          <f-col span="2" :phone="{span: 12}">1</f-col>
+          <f-col span="20" offset="2" :phone="{span: 12, offset: 0}">11</f-col>
         </f-row>
         <f-row gutter="20">
           <f-col span="4">1</f-col>
