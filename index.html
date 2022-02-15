@@ -27,11 +27,9 @@
         --border-color: #999;
         --border-color-hover: #666;
       }
-
       #app {
         margin: 20px;
       }
-
       body {
         font-size: var(--font-size);
       }
@@ -43,47 +41,35 @@
     </style>
   </head>
   <body>
+    <style>
+      .demo {
+        background: #ddd;
+        border: 1px solid #666;
+        height: 100px;
+      }
+    </style>
+
     <div id="app">
-      <div style="border: 1px solid black">
-        <f-row gutter="20">
-          <f-col span="24" :ipad="{span:8}" :narrow-pc="{span:4}" :pc="{span:2}" :wide-pc="{span:1}"> 1 </f-col>
-          <f-col span="24" :ipad="{span:16}" :narrow-pc="{span:20}" :pc="{span:22}" :wide-pc="{span:23}">11 </f-col>
-        </f-row>
-        <f-row gutter="20">
-          <f-col span="4">1</f-col>
-          <f-col span="20">11</f-col>
-        </f-row>
-        <f-row gutter="20">
-          <f-col span="4">1</f-col>
-          <f-col span="18" offset="2">11</f-col>
-        </f-row>
-        <f-row gutter="20">
-          <f-col span="4">1</f-col>
-          <f-col span="8" offset="2">11</f-col>
-          <f-col span="8" offset="2">11</f-col>
-        </f-row>
-        <f-row gutter="20">
-          <f-col span="4">1</f-col>
-          <f-col span="4" offset="6">11</f-col>
-          <f-col span="8" offset="2">11</f-col>
-        </f-row>
-      </div>
-      <hr />
-      <div class="box">
-        <f-input v-model="message"></f-input>
-        <p>{{message}}</p>
-        <button @click="message+=1">+1</button>
-      </div>
-      <div style="padding: 20px" />
-      <f-button>按钮</f-button>
-      <f-button icon="like">点赞</f-button>
-      <f-button icon="download" icon-position="right" :loading="loading2" @click="loading2=!loading2">下载</f-button>
-      <f-button :loading="loading1" @click="loading1 = !loading1">加载</f-button>
-      <f-button-group>
-        <f-button icon="left">上一页</f-button>
-        <f-button>更多</f-button>
-        <f-button icon="right" icon-position="right">下一页</f-button>
-      </f-button-group>
+      <f-row>
+        <f-col span="24" :narrow-pc="{span:8}">
+          <div class="demo"></div>
+        </f-col>
+        <f-col span="24" :narrow-pc="{span:8}">
+          <div class="demo"></div>
+        </f-col>
+        <f-col span="24" :narrow-pc="{span:8}">
+          <div class="demo"></div>
+        </f-col>
+        <f-col span="24" :narrow-pc="{span:8}">
+          <div class="demo"></div>
+        </f-col>
+        <f-col span="24" :narrow-pc="{span:8}">
+          <div class="demo"></div>
+        </f-col>
+        <f-col span="24" :narrow-pc="{span:8}">
+          <div class="demo"></div>
+        </f-col>
+      </f-row>
     </div>
     <script src="./src/app.js"></script>
   </body>
