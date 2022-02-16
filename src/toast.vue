@@ -1,8 +1,10 @@
 <template>
-  <div class="toast">
-    <slot v-if="!enableHtml"></slot>
-    <div v-else v-html="$slots.default[0]"></div>
-    <div class="line"></div>
+  <div class="toast" ref="wrapper">
+    <div class="message">
+      <slot v-if="!enableHtml"></slot>
+      <div v-else v-html="$slots.default[0]"></div>
+    </div>
+    <div class="line" ref="line"></div>
     <span class="close" v-if="closeButton" @click="onClickClose">
       {{ closeButton.text }}
     </span>
@@ -10,6 +12,7 @@
 </template>
 
 <script>
+  //构造组件的选项
   export default {
     name: 'FeelToast',
     props: {
@@ -35,22 +38,35 @@
         default: false
       }
     },
+    created() {},
     mounted() {
-      if (this.autoClose) {
-        setTimeout(() => {
-          this.close()
-        }, this.autoCloseDelay * 1000)
-      }
+      this.updateStyles()
+      this.execAutoClose()
     },
     methods: {
+      updateStyles() {
+        this.$nextTick(() => {
+          this.$refs.line.style.height = `${this.$refs.wrapper.getBoundingClientRect().height}px`
+        })
+      },
+      execAutoClose() {
+        if (this.autoClose) {
+          setTimeout(() => {
+            this.close()
+          }, this.autoCloseDelay * 1000)
+        }
+      },
       close() {
         this.$el.remove()
         this.$destroy()
       },
+      log() {
+        console.log('测试')
+      },
       onClickClose() {
         this.close()
         if (this.closeButton && typeof this.closeButton.callback === 'function') {
-          this.closeButton.callback()
+          this.closeButton.callback(this) //this === toast实例
         }
       }
     }
@@ -76,14 +92,16 @@
     border-radius: 4px;
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
     padding: 0 16px;
+    .message {
+      padding: 8px 0;
+    }
     .close {
       padding-left: 16px;
-
-      cursor: pointer;
+      flex-shrink: 0;
     }
     .line {
       height: 100%;
-      border-left: 1px solid #7a7a7a;
+      border-left: 1px solid #666;
       margin-left: 16px;
     }
   }

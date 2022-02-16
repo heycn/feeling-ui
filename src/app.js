@@ -27,6 +27,10 @@ Vue.component('f-footer', Footer)
 Vue.component('f-toast', Toast)
 Vue.use(plugin)
 
+import createElement from 'vue'
+
+const h = createElement
+
 new Vue({
   el: '#app',
   data: {
@@ -36,7 +40,7 @@ new Vue({
     message: 'hi'
   },
   created() {
-    this.$toast('<p>你好你好</p><p>你好你好</p><p>你好你好</p><p>你好你好</p><p>你好你好</p><p>你好你好</p><p>你好你好</p><p>你好你好</p><p>你好你好</p><p>你好你好</p><p>你好你好</p><p>你好你好</p><p>你好你好</p><p>你好你好</p><p>你好你好</p>', {
+    this.$toast('文字', {
       enableHtml: false
     })
   },
