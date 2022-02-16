@@ -27,46 +27,14 @@
         --border-color: #999;
         --border-color-hover: #666;
       }
-      #app {
-      }
       body {
         font-size: var(--font-size);
       }
     </style>
   </head>
   <body>
-    <style>
-      .demo {
-        border: 1px solid #666;
-        min-height: 100px;
-      }
-      .sider {
-        background: #333;
-        width: 150px;
-      }
-      .sider.slide-enter,
-      .sider.slide-leave-to {
-        margin-left: -150px;
-      }
-      .header {
-        background: #999;
-        height: 100px;
-      }
-      .footer {
-        background: #ccc;
-        height: 50px;
-      }
-    </style>
-
     <div id="app">
-      <f-layout style="height: 100vh">
-        <f-sider>sider</f-sider>
-        <f-layout>
-          <f-header>header</f-header>
-          <f-content>content</f-content>
-          <f-footer>footer</f-footer>
-        </f-layout>
-      </f-layout>
+      <button @click="showToast">显示</button>
     </div>
     <script src="./src/app.js"></script>
   </body>
