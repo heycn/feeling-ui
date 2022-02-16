@@ -35,9 +35,12 @@ new Vue({
     loading3: false,
     message: 'hi'
   },
+  created() {
+    this.$toast('<p>你好你好</p><p>你好你好</p><p>你好你好</p><p>你好你好</p><p>你好你好</p><p>你好你好</p><p>你好你好</p><p>你好你好</p><p>你好你好</p><p>你好你好</p><p>你好你好</p><p>你好你好</p><p>你好你好</p><p>你好你好</p><p>你好你好</p>', {
+      enableHtml: false
+    })
+  },
   methods: {
-    showToast() {
-      this.$toast('我是消息')
-    }
+    showToast() {}
   }
 })
