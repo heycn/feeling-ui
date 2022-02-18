@@ -3,12 +3,11 @@
     <slot></slot>
   </div>
 </template>
-
 <script>
   export default {
     name: 'FeelTabsItem',
     inject: ['eventBus'],
-    date() {
+    data() {
       return {
         active: false
       }

@@ -34,19 +34,19 @@
   </head>
   <body>
     <div id="app">
-      <f-tabs :selected.sync="selectedTab">
+      <f-tabs :selected.sync="selectedTab" @update:selected="yyy">
         <f-tabs-head>
           <template slot="actions">
             <button>设置</button>
           </template>
-          <f-tabs-item name="woman"> <f-icon name="add"></f-icon> meinv</f-tabs-item>
-          <f-tabs-item name="finance" disabled>财经</f-tabs-item>
-          <f-tabs-item name="sports">体育</f-tabs-item>
+          <f-tabs-item name="woman"> <f-icon name="settings"></f-icon>美女 </f-tabs-item>
+          <f-tabs-item name="finance" disabled> 财经 </f-tabs-item>
+          <f-tabs-item name="sports"> 体育 </f-tabs-item>
         </f-tabs-head>
         <f-tabs-body>
-          <f-tabs-pane name="woman">meinv相关资讯</f-tabs-pane>
-          <f-tabs-pane name="finance">财经相关资讯</f-tabs-pane>
-          <f-tabs-pane name="sports">体育相关资讯</f-tabs-pane>
+          <f-tabs-pane name="woman"> 美女相关资讯 </f-tabs-pane>
+          <f-tabs-pane name="finance"> 财经相关资讯 </f-tabs-pane>
+          <f-tabs-pane name="sports"> 体育相关资讯 </f-tabs-pane>
         </f-tabs-body>
       </f-tabs>
     </div>

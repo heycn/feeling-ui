@@ -11,7 +11,9 @@
   export default {
     name: 'FeelTabsHead',
     inject: ['eventBus'],
-    created() {}
+    created() {
+      this.$emit('update:selected', 'tabs-head 抛出的数据')
+    }
   }
 </script>
 
