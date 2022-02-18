@@ -46,7 +46,6 @@
         }
       }
     },
-    created() {},
     mounted() {
       this.updateStyles()
       this.execAutoClose()
@@ -61,7 +60,7 @@
     methods: {
       updateStyles() {
         this.$nextTick(() => {
-          this.$refs.line.style.height = `${this.$refs.wrapper.getBoundingClientRect().height}px`
+          this.$refs.line.style.height = `${this.$refs.toast.getBoundingClientRect().height}px`
         })
       },
       execAutoClose() {
