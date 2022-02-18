@@ -1,17 +1,22 @@
 import Vue from 'vue'
-import Button from './button.vue'
-import Icon from './icon.vue'
-import ButtonGroup from './button-group.vue'
-import Input from './input.vue'
-import Row from './row.vue'
-import Col from './col.vue'
-import Layout from './layout.vue'
-import Header from './header.vue'
-import Sider from './sider.vue'
-import Content from './content.vue'
-import Footer from './footer.vue'
-import Toast from './toast.vue'
+import Button from './button'
+import Icon from './icon'
+import ButtonGroup from './button-group'
+import Input from './input'
+import Row from './row'
+import Col from './col'
+import Layout from './layout'
+import Header from './header'
+import Sider from './sider'
+import Content from './content'
+import Footer from './footer'
+import Toast from './toast'
 import plugin from './plugin'
+import Tabs from './tabs'
+import TabsHead from './tabs-head'
+import TabsBody from './tabs-body'
+import TabsItem from './tabs-item'
+import TabsPane from './tabs-pane'
 
 Vue.component('f-button', Button)
 Vue.component('f-icon', Icon)
@@ -21,11 +26,16 @@ Vue.component('f-row', Row)
 Vue.component('f-col', Col)
 Vue.component('f-layout', Layout)
 Vue.component('f-header', Header)
-Vue.component('f-sider', Sider)
 Vue.component('f-content', Content)
 Vue.component('f-footer', Footer)
+Vue.component('f-sider', Sider)
 Vue.component('f-toast', Toast)
 Vue.use(plugin)
+Vue.component('f-tabs', Tabs)
+Vue.component('f-tabs-head', TabsHead)
+Vue.component('f-tabs-body', TabsBody)
+Vue.component('f-tabs-item', TabsItem)
+Vue.component('f-tabs-pane', TabsPane)
 
 import createElement from 'vue'
 
@@ -34,10 +44,7 @@ const h = createElement
 new Vue({
   el: '#app',
   data: {
-    loading1: false,
-    loading2: true,
-    loading3: false,
-    message: 'hi'
+    selectedTab: 'sports'
   },
   created() {},
   methods: {

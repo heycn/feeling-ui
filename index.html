@@ -34,9 +34,21 @@
   </head>
   <body>
     <div id="app">
-      <button @click="showToast1">top</button>
-      <button @click="showToast2">middle</button>
-      <button @click="showToast3">bottom</button>
+      <f-tabs :selected.sync="selectedTab">
+        <f-tabs-head>
+          <template slot="actions">
+            <button>设置</button>
+          </template>
+          <f-tabs-item name="woman"> <f-icon name="add"></f-icon> meinv</f-tabs-item>
+          <f-tabs-item name="finance" disabled>财经</f-tabs-item>
+          <f-tabs-item name="sports">体育</f-tabs-item>
+        </f-tabs-head>
+        <f-tabs-body>
+          <f-tabs-pane name="woman">meinv相关资讯</f-tabs-pane>
+          <f-tabs-pane name="finance">财经相关资讯</f-tabs-pane>
+          <f-tabs-pane name="sports">体育相关资讯</f-tabs-pane>
+        </f-tabs-body>
+      </f-tabs>
     </div>
     <script src="./src/app.js"></script>
   </body>
