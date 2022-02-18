@@ -6,7 +6,11 @@
 
 <script>
   export default {
-    name: 'FeelTabsBody'
+    name: 'FeelTabsBody',
+    inject: ['eventBus'],
+    created() {
+
+    }
   }
 </script>
 
