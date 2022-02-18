@@ -96,9 +96,6 @@
     min-height: $toast-min-height;
     line-height: 1.8;
     position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
     display: flex;
     color: white;
     align-items: center;
@@ -106,6 +103,7 @@
     border-radius: 4px;
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
     padding: 0 16px;
+    left: 50%;
     .message {
       padding: 8px 0;
     }
@@ -117,6 +115,18 @@
       height: 100%;
       border-left: 1px solid #666;
       margin-left: 16px;
+    }
+    &.position-top {
+      top: 0;
+      transform: translateX(-50%);
+    }
+    &.position-bottom {
+      bottom: 0;
+      transform: translateX(-50%);
+    }
+    &.position-middle {
+      top: 50%;
+      transform: translate(-50%, -50%);
     }
   }
 </style>
