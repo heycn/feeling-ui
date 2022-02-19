@@ -1,8 +1,9 @@
 <template>
-  <div class="tabs-item" @click="onclick" :class="classes">
+  <div class="tabs-item" @click="onClick" :class="classes" :data-name="name">
     <slot></slot>
   </div>
 </template>
+
 <script>
   export default {
     name: 'FeelTabsItem',
@@ -31,20 +32,19 @@
       }
     },
     created() {
-      this.eventBus.$on('update:selected', name => {
-        this.active = name === this.name
-        // 优化为以上代码
-        // if (name === this.name) {
-        //   this.active = true
-        // } else {
-        //   this.active = false
-        // }
-      })
+      if (this.eventBus) {
+        this.eventBus.$on('update:selected', name => {
+          this.active = name === this.name
+        })
+      }
     },
     methods: {
-      onclick() {
-        if (this.disabled) { return }
-        this.eventBus.$emit('update:selected', this.name, this)
+      onClick() {
+        if (this.disabled) {
+          return
+        }
+        this.eventBus && this.eventBus.$emit('update:selected', this.name, this)
+        this.$emit('click', this)
       }
     }
   }

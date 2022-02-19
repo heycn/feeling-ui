@@ -34,12 +34,15 @@
   </head>
   <body>
     <div id="app">
+      <f-tabs>
+        <div>hi</div>
+      </f-tabs>
       <f-tabs :selected.sync="selectedTab" @update:selected="yyy">
         <f-tabs-head>
           <template slot="actions">
             <button>设置</button>
           </template>
-          <f-tabs-item name="woman" disabled> <f-icon name="add"></f-icon>美女 </f-tabs-item>
+          <f-tabs-item name="woman" disabled> <f-icon name="settings"></f-icon>美女 </f-tabs-item>
           <f-tabs-item name="finance"> 财经 </f-tabs-item>
           <f-tabs-item name="sports"> 体育 </f-tabs-item>
         </f-tabs-head>
