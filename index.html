@@ -33,25 +33,19 @@
     </style>
   </head>
   <body>
-    <div id="app">
-      <f-tabs>
-        <div>hi</div>
-      </f-tabs>
-      <f-tabs :selected.sync="selectedTab" @update:selected="yyy">
-        <f-tabs-head>
-          <template slot="actions">
-            <button>设置</button>
-          </template>
-          <f-tabs-item name="woman" disabled> <f-icon name="settings"></f-icon>美女 </f-tabs-item>
-          <f-tabs-item name="finance"> 财经 </f-tabs-item>
-          <f-tabs-item name="sports"> 体育 </f-tabs-item>
-        </f-tabs-head>
-        <f-tabs-body>
-          <f-tabs-pane name="woman"> 美女相关资讯 </f-tabs-pane>
-          <f-tabs-pane name="finance"> 财经相关资讯 </f-tabs-pane>
-          <f-tabs-pane name="sports"> 体育相关资讯 </f-tabs-pane>
-        </f-tabs-body>
-      </f-tabs>
+    <div id="app" style="padding-top: 100px; padding-left: 100px">
+      <f-popover>
+        <template slot="content">
+          <div>popover 内容</div>
+        </template>
+        <button>点我</button>
+      </f-popover>
+      <f-popover>
+        <template slot="content">
+          <div>popover 内容</div>
+        </template>
+        <button>点我</button>
+      </f-popover>
     </div>
     <script src="./src/app.js"></script>
   </body>
