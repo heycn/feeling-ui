@@ -16,7 +16,6 @@ npm start
 
 ```bash
 # 只能测一次
-npm run test
 
 # 运行一次，每次保存都会测试，但是 window 上有 BUG
 
@@ -32,7 +31,11 @@ npm run dev-test
 
 # 在根目录下的 .npmrc 文件里注销以下这行代码，否则就会发布到淘宝源上去了
 
+<<<<<<< HEAD
+`registry=https://registry.npm.taobao.org`
+=======
 registry=https://registry.npm.taobao.org
+>>>>>>> a5ab324dfae70fe4a289f1c152495255856fcfe8
 
 # 执行
 
