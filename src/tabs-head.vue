@@ -1,8 +1,7 @@
 <template>
   <div class="tabs-head">
     <slot></slot>
-
-    <div class="line"></div>
+    <div class="line" ref="line"></div>
     <div class="actions-wrapper">
       <slot name="actions"></slot>
     </div>
@@ -35,7 +34,7 @@
       position: absolute;
       bottom: 0;
       border-bottom: 1px solid $blue;
-      transition: all 300s;
+      transition: all 300ms;
     }
     > .actions-wrapper {
       margin-left: auto;
