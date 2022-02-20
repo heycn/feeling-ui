@@ -15,7 +15,6 @@
     data() {
       return { visible: false }
     },
-    mounted() {},
     methods: {
       xxx() {
         this.visible = !this.visible
@@ -35,8 +34,7 @@
           console.log('vm 隐藏 popover')
         }
       }
-    },
-    mounted() {}
+    }
   }
 </script>
 
