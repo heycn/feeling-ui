@@ -36,15 +36,19 @@
     <div id="app" style="padding-left: 100px">
       <div style="overflow: hidden; padding-top: 150px; padding-bottom: 40px">
         <f-popover position="bottom">
-          <template slot="content">
-            <div>askdjsakdjsakjdslkjdlskjdlsjkdlskjdlsjkdlskjdlsajkdlajkdlkajdlksajdladjk</div>
-            <div>askdjsakdjsakjdslkjdlskjdlsjkdlskjdlsjkdlskjdlsajkdlajkdlkajdlksajdladjk</div>
+          <template slot="content" slot-scope="{close}">
+            <div>文字</div>
+            <div>popover <a href="http://qq.com">看新网</a> 内容</div>
+            <f-button @click="close">关闭</f-button>
           </template>
           <f-button>点我</f-button>
         </f-popover>
         <f-popover position="top">
           <template slot="content">
-            <div>popover内容</div>
+            <div>
+              popover内容
+              <f-button>关闭</f-button>
+            </div>
           </template>
           <f-button>点我</f-button>
         </f-popover>
@@ -83,7 +87,7 @@
         </f-popover>
         <f-popover position="right" trigger="hover">
           <template slot="content">
-            <div>popover内容</div>
+            <div>popover <a href="http://qq.com">看新网</a> 内容</div>
           </template>
           <f-button>点我</f-button>
         </f-popover>
