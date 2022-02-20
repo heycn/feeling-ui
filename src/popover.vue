@@ -3,7 +3,7 @@
     <div ref="contentWrapper" class="content-wrapper" v-if="visible">
       <slot name="content"></slot>
     </div>
-    <span ref="triggerWrapper">
+    <span ref="triggerWrapper" style="display: inline-block">
       <slot></slot>
     </span>
   </div>
@@ -53,6 +53,8 @@
 </script>
 
 <style lang="scss" scoped>
+  $border-color: #ddd;
+  $border-radius: 4px;
   .popover {
     display: inline-block;
     vertical-align: top;
