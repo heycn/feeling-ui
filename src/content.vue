@@ -1,17 +1,11 @@
 <template>
-  <div class="content">
-    <slot />
+  <div class="feel-content">
+    <slot></slot>
   </div>
 </template>
 
-<script>
-  export default {
-    name: 'FeelContent'
-  }
-</script>
-
 <style lang="scss" scoped>
-  .content {
+  .feel-content {
     flex-grow: 1;
   }
 </style>
