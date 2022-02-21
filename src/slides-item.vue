@@ -1,6 +1,6 @@
 <template>
   <transition name="slide">
-    <div class="f-slides-item" v-if="visible" :class="{reverse}">
+    <div class="f-slides-item" v-if="visible" :class="{ reverse }">
       <slot></slot>
     </div>
   </transition>
@@ -14,16 +14,14 @@
         required: true
       }
     },
-    data () {
+    data() {
       return {
         selected: undefined,
         reverse: false
       }
     },
     computed: {
-      visible () {
-        console.log(`我的name是${this.name}`)
-        console.log(`我的方向是${this.reverse ? '反向' : '正向'}`)
+      visible() {
         return this.selected === this.name
       }
     }
@@ -35,12 +33,14 @@
   }
   .slide-leave-active {
     position: absolute;
-    left: 0; top: 0;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
   }
-  .slide-enter-active, .slide-leave-active {
-    transition: all 3s;
+  .slide-enter-active,
+  .slide-leave-active {
+    transition: all 0.5s;
   }
   .slide-enter {
     transform: translateX(100%);

@@ -1,5 +1,5 @@
 <template>
-  <div class="f-slides">
+  <div class="f-slides" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave">
     <div class="f-slides-window" ref="window">
       <div class="f-slides-wrapper">
         <slot></slot>
@@ -27,7 +27,8 @@
     data() {
       return {
         childrenLength: 0,
-        lastSelectedIndex: undefined
+        lastSelectedIndex: undefined,
+        timerId: undefined
       }
     },
     mounted() {
@@ -47,9 +48,18 @@
       }
     },
     methods: {
+      onMouseEnter() {
+        this.pause()
+      },
+      onMouseLeave() {
+        this.playAutomatically()
+      },
       playAutomatically() {
-        let index = this.names.indexOf(this.getSelected())
+        if (this.timerId) {
+          return
+        }
         let run = () => {
+          let index = this.names.indexOf(this.getSelected())
           let newIndex = index - 1
           if (newIndex === -1) {
             newIndex = this.names.length - 1
@@ -57,11 +67,14 @@
           if (newIndex === this.names.length) {
             newIndex = 0
           }
-          this.select(newIndex)
-          setTimeout(run, 3000)
+          this.select(newIndex) // 告诉外界选中 newIndex
+          this.timerId = setTimeout(run, 3000)
         }
-        // setTimeout(run, 3000)
-        // 用 setTimeout 模拟 setInterval
+        this.timerId = setTimeout(run, 3000)
+      },
+      pause() {
+        window.clearTimeout(this.timerId)
+        this.timerId = undefined
       },
       select(index) {
         this.lastSelectedIndex = this.selectedIndex
@@ -74,7 +87,14 @@
       updateChildren() {
         let selected = this.getSelected()
         this.$children.forEach(vm => {
-          vm.reverse = this.selectedIndex > this.lastSelectedIndex ? false : true
+          let reverse = this.selectedIndex > this.lastSelectedIndex ? false : true
+          if (this.lastSelectedIndex === this.$children.length - 1 && this.selectedIndex === 0) {
+            reverse = false
+          }
+          if (this.lastSelectedIndex === 0 && this.selectedIndex === this.$children.length - 1) {
+            reverse = true
+          }
+          vm.reverse = reverse
           this.$nextTick(() => {
             vm.selected = selected
           })
@@ -86,7 +106,6 @@
 
 <style lang="scss" scoped>
   .f-slides {
-    border: 1px solid black;
     &-window {
       overflow: hidden;
     }
