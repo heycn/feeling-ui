@@ -29,8 +29,6 @@
     "vue-hot-reload-api": "^2.3.0"
   },
   "devDependencies": {
-    "vue-server-renderer": "2.5.16",
-    "vue-router": "^3.0.1",
     "@vue/component-compiler-utils": "^3.3.0",
     "chai": "^4.3.6",
     "chai-spies": "^1.0.0",
@@ -46,7 +44,9 @@
     "sass-loader": "^7.1.0",
     "sinon": "^13.0.1",
     "sinon-chai": "^3.7.0",
-    "vue-template-compiler": "^2.6.14",
+    "vue-router": "^3.0.1",
+    "vue-server-renderer": "2.5.16",
+    "vue-template-compiler": "2.5.16",
     "vuepress": "^1.9.7"
   },
   "alias": {

@@ -20,28 +20,30 @@ import TabsPane from './tabs-pane'
 import Popover from './popover'
 import Collapse from './collapse'
 import CollapseItem from './collapse-item'
+import Cascader from './cascader'
 
 Vue.component('f-button', Button)
-Vue.component('f-icon', Icon)
 Vue.component('f-button-group', ButtonGroup)
-Vue.component('f-input', Input)
-Vue.component('f-row', Row)
+Vue.component('f-cascader', Cascader)
 Vue.component('f-col', Col)
-Vue.component('f-layout', Layout)
-Vue.component('f-header', Header)
-Vue.component('f-content', Content)
-Vue.component('f-footer', Footer)
-Vue.component('f-sider', Sider)
-Vue.component('f-toast', Toast)
-Vue.use(plugin)
-Vue.component('f-tabs', Tabs)
-Vue.component('f-tabs-head', TabsHead)
-Vue.component('f-tabs-body', TabsBody)
-Vue.component('f-tabs-item', TabsItem)
-Vue.component('f-tabs-pane', TabsPane)
-Vue.component('f-popover', Popover)
 Vue.component('f-collapse', Collapse)
 Vue.component('f-collapse-item', CollapseItem)
+Vue.component('f-content', Content)
+Vue.component('f-footer', Footer)
+Vue.component('f-header', Header)
+Vue.component('f-icon', Icon)
+Vue.component('f-input', Input)
+Vue.component('f-layout', Layout)
+Vue.component('f-popover', Popover)
+Vue.component('f-row', Row)
+Vue.component('f-sider', Sider)
+Vue.component('f-tabs', Tabs)
+Vue.component('f-tabs-body', TabsBody)
+Vue.component('f-tabs-head', TabsHead)
+Vue.component('f-tabs-item', TabsItem)
+Vue.component('f-tabs-pane', TabsPane)
+Vue.component('f-toast', Toast)
+Vue.use(plugin)
 
 import createElement from 'vue'
 
@@ -50,34 +52,31 @@ const h = createElement
 new Vue({
   el: '#app',
   data: {
-    selectedTab: ['2', '1']
+    source: [
+      {
+        name: '盲盒一',
+        children: [
+          {
+            name: '小猪',
+            children: [{ name: '公猪' }, { name: '母猪' }, { name: '小奶猪' }]
+          },
+          {
+            name: '喵咪',
+            children: [{ name: '英短' }, { name: '布偶' }, { name: '狸花' }]
+          }
+        ]
+      },
+      {
+        name: '盲盒二',
+        children: [
+          {
+            name: '旺旺大礼包',
+            children: [{ name: '旺仔牛奶' }, { name: '旺旺小小酥' }, { name: '旺旺仙贝' }]
+          }
+        ]
+      }
+    ]
   },
   created() {},
-  methods: {
-    yyy() {
-      console.log('yyy')
-    },
-    showToast1() {
-      this.showToast('top')
-    },
-    showToast2() {
-      this.showToast('middle')
-    },
-    showToast3() {
-      this.showToast('bottom')
-    },
-    showToast(position) {
-      this.$toast(`你的智商目前为 ${parseInt(Math.random() * 100)}。你的智商需要充值！`, {
-        position,
-        enableHtml: false,
-        closeButton: {
-          text: '已充值',
-          callback() {
-            console.log('他说已经充值智商了')
-          }
-        },
-        autoClose: 3
-      })
-    }
-  }
+  methods: {}
 })
