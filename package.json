@@ -26,7 +26,7 @@
   "homepage": "https://github.com/heycn/feeling-ui#readme",
   "dependencies": {
     "vue": "2.5.16",
-    "vue-hot-reload-api": "2.3.0"
+    "vue-hot-reload-api": "^2.3.0"
   },
   "devDependencies": {
     "vue-server-renderer": "2.5.16",
@@ -43,7 +43,7 @@
     "mocha": "^9.2.0",
     "node-sass": "^7.0.1",
     "parcel-bundler": "^1.9.3",
-    "sass": "^1.49.7",
+    "sass-loader": "^7.1.0",
     "sinon": "^13.0.1",
     "sinon-chai": "^3.7.0",
     "vue-template-compiler": "^2.6.14",
