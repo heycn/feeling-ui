@@ -3,13 +3,14 @@
     <p>{{ (selected && selected[0] && selected[0].name) || '空' }}</p>
     <p>{{ (selected && selected[1] && selected[1].name) || '空' }}</p>
     <p>{{ (selected && selected[2] && selected[2].name) || '空' }}</p>
-    <f-cascader
-      :source="source"
-      popover-height="200px"
-      :selected="selected"
-      @update:selected="selected = $event"
-    ></f-cascader>
-    <p>22222</p>
+    <div style="padding: 20px">
+      <f-cascader
+        :source="source"
+        popover-height="200px"
+        :selected="selected"
+        @update:selected="selected = $event"
+      ></f-cascader>
+    </div>
   </div>
 </template>
 <script>
