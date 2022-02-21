@@ -1,8 +1,8 @@
-import chai, {expect} from 'chai'
+import chai, { expect } from 'chai'
 import sinon from 'sinon'
 import sinonChai from 'sinon-chai'
-import {shallowMount, mount} from '@vue/test-utils'
-import Button from '../../src/button/button'
+import { shallowMount, mount } from '@vue/test-utils'
+import Button from '@/button.vue'
 chai.use(sinonChai)
 
 describe('Button.vue', () => {
@@ -35,7 +35,7 @@ describe('Button.vue', () => {
     const wrapper = mount(Button, {
       attachToDocument: true,
       propsData: {
-        icon: 'settings',
+        icon: 'settings'
       }
     })
     const vm = wrapper.vm
@@ -58,16 +58,14 @@ describe('Button.vue', () => {
   it('点击 button 触发 click 事件', () => {
     const wrapper = mount(Button, {
       propsData: {
-        icon: 'settings',
+        icon: 'settings'
       }
     })
     const vm = wrapper.vm
 
-
-    const callback = sinon.fake();
+    const callback = sinon.fake()
     vm.$on('click', callback)
     vm.$el.click()
     expect(callback).to.have.been.called
-
   })
 })
