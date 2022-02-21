@@ -4,7 +4,6 @@
     @mouseenter="onMouseEnter"
     @mouseleave="onMouseLeave"
     @touchstart="onTouchStart"
-    @touchmove="onTouchMove"
     @touchend="onTouchEnd"
   >
     <div class="f-slides-window" ref="window">
@@ -13,7 +12,7 @@
       </div>
     </div>
     <div class="f-slides-dots">
-      <span @click="onClickPrev">
+      <span @click="onClickPrev" data-action="prev">
         <f-icon name="left"></f-icon>
       </span>
       <span
@@ -25,7 +24,7 @@
       >
         {{ n }}
       </span>
-      <span @click="onClickNext">
+      <span @click="onClickNext" data-action="next">
         <f-icon name="right"></f-icon>
       </span>
     </div>
@@ -67,6 +66,9 @@
     updated() {
       this.updateChildren()
     },
+    beforeDestroy() {
+      this.pause()
+    },
     computed: {
       selectedIndex() {
         let index = this.names.indexOf(this.selected)
@@ -93,7 +95,6 @@
         }
         this.startTouch = e.touches[0]
       },
-      onTouchMove() {},
       onTouchEnd(e) {
         let endTouch = e.changedTouches[0]
         let { clientX: x1, clientY: y1 } = this.startTouch
