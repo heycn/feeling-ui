@@ -2,8 +2,8 @@
   <div class="cascaderItem" :style="{ height: height }">
     <div class="left">
       <div class="label" v-for="item in items" @click="onClickLabel(item)">
-        {{ item.name }}
-        <icon class="icon" v-if="item.children" name="right"></icon>
+        <span class="name">{{ item.name }}</span>
+        <icon class="icon" v-if="rightArrowVisible(item)" name="right"></icon>
       </div>
     </div>
     <div class="right" v-if="rightItems">
@@ -35,6 +35,9 @@
         type: Array,
         default: () => []
       },
+      loadData: {
+        type: Function
+      },
       level: {
         type: Number,
         default: 0
@@ -52,6 +55,9 @@
     },
     mounted() {},
     methods: {
+      rightArrowVisible(item) {
+        return this.loadData ? !item.isLeaf : item.children
+      },
       onClickLabel(item) {
         let copy = JSON.parse(JSON.stringify(this.selected))
         copy[this.level] = item
@@ -82,11 +88,19 @@
       border-left: 1px solid $border-color-light;
     }
     .label {
-      padding: 0.3em 1em;
+      padding: 0.5em 1em;
       display: flex;
       align-items: center;
+      cursor: pointer;
+      &:hover {
+        background: $grey;
+      }
+      > .name {
+        margin-right: 1em;
+        user-select: none;
+      }
       .icon {
-        margin-left: 1em;
+        margin-left: auto;
         transform: scale(0.5);
       }
     }
