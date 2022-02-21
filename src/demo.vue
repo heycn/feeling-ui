@@ -22,7 +22,7 @@
     components: { FSlides, FSlidesItem },
     data() {
       return {
-        selected: '2'
+        selected: undefined
       }
     },
     created() {}
