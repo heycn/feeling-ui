@@ -1,6 +1,10 @@
 <template>
   <div class="wrapper" :class="{ error }">
-    <input :value="value" type="text" :disabled="disabled" :readonly="readonly"
+    <input
+      :value="value"
+      type="text"
+      :disabled="disabled"
+      :readonly="readonly"
       @change="$emit('change', $event.target.value)"
       @input="$emit('input', $event.target.value)"
       @focus="$emit('focus', $event.target.value)"
@@ -39,13 +43,7 @@
 </script>
 
 <style lang="scss" scoped>
-  $height: 32px;
-  $border-color: #999;
-  $border-color-hover: #666;
-  $border-radius: 4px;
-  $font-size: 12px;
-  $box-shadow-color: rgba(0, 0, 0, 0.5);
-  $red: #e81123;
+  @import 'var';
   .wrapper {
     font-size: $font-size;
     display: inline-flex;
