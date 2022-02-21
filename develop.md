@@ -15,14 +15,8 @@ npm start
 ## 单元测试
 
 ```bash
-# 只能测一次
 
 npm run test
-
-# 运行一次，每次保存都会测试，但是 window 上有 BUG
-
-npm run dev-test
-
 ```
 
 ## 发布 npm

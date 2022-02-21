@@ -5,7 +5,6 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "parcel index.html --no-cache",
-    "dev-test": "parcel watch test/* --no-cache & karma start",
     "test": "parcel build test/* --no-minify && karma start --single-run",
     "build": "npx parcel build index.js --no-cache --no-minify",
     "docs:dev": "vuepress dev docs",
@@ -26,10 +25,12 @@
   },
   "homepage": "https://github.com/heycn/feeling-ui#readme",
   "dependencies": {
-    "vue": "^2.5.16",
-    "vue-hot-reload-api": "^2.3.4"
+    "vue": "2.5.16",
+    "vue-hot-reload-api": "2.3.0"
   },
   "devDependencies": {
+    "vue-server-renderer": "2.5.16",
+    "vue-router": "^3.0.1",
     "@vue/component-compiler-utils": "^3.3.0",
     "chai": "^4.3.6",
     "chai-spies": "^1.0.0",
