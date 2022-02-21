@@ -1,27 +1,31 @@
-<h1 align="center">Feeling UI
+# hello-world
 
-一个不太一样的 UI 组件库</h1>
+## Project setup
 
-## 介绍
-
-## 开始使用
-
-1. 安装
-
-使用本框架前，请在 CSS 中开启 border-box
-
-```css
-* {
-  box-sizing: border-box;
-}
+```
+yarn install
 ```
 
-## 文档
+### Compiles and hot-reloads for development
 
-## 变更记录
+```
+yarn run serve
+```
 
-## 联系方式
+### Compiles and minifies for production
 
-## 贡献代码
+```
+yarn run build
+```
 
-- [开发者文档](develop.md)
+### Lints and fixes files
+
+```
+yarn run lint
+```
+
+### Run your unit tests
+
+```
+yarn run test:unit
+```
