@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "test": "vue-cli-service test:unit",
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
@@ -14,7 +15,6 @@
     "@vue/cli-plugin-babel": "^3.0.0",
     "@vue/cli-plugin-unit-mocha": "^3.0.0",
     "@vue/cli-service": "^3.0.0",
-    "test": "vue-cli-service test:unit",
     "@vue/test-utils": "^1.0.0-beta.20",
     "chai": "^4.1.2",
     "node-sass": "^4.9.0",
