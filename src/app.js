@@ -71,7 +71,16 @@ new Vue({
         children: [
           {
             name: '旺旺大礼包',
-            children: [{ name: '旺仔牛奶' }, { name: '旺旺小小酥' }, { name: '旺旺仙贝' }]
+            children: [{ name: '旺旺碎冰冰' }, { name: '旺旺仙贝' }, { name: '旺旺雪饼' }]
+          }
+        ]
+      },
+      {
+        name: '终极盲盒',
+        children: [
+          {
+            name: '考试大鸭蛋',
+            children: [{ name: '爸爸的皮带' }, { name: '妈妈的扫把' }]
           }
         ]
       }
