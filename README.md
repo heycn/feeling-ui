@@ -1,31 +1,16 @@
-# hello-world
+# Feeling UI
 
-## Project setup
+[官方文档](https://frankfang.github.io/frank-test-1/)
 
-```
-yarn install
-```
+## 源码学习
 
-### Compiles and hot-reloads for development
+1. 安装依赖
 
-```
-yarn run serve
-```
+   ```
+   yarn install
+   ```
 
-### Compiles and minifies for production
-
-```
-yarn run build
-```
-
-### Lints and fixes files
-
-```
-yarn run lint
-```
-
-### Run your unit tests
-
-```
-yarn run test:unit
-```
+2. 启动 dev server
+   ```
+   yarn serve
+   ```
