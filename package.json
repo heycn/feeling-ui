@@ -7,7 +7,9 @@
     "start": "parcel index.html --no-cache",
     "dev-test": "parcel watch test/* --no-cache & karma start",
     "test": "parcel build test/* --no-minify && karma start --single-run",
-    "build": "npx parcel build index.js --no-cache --no-minify"
+    "build": "npx parcel build index.js --no-cache --no-minify",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "repository": {
     "type": "git",
@@ -43,7 +45,8 @@
     "sass": "^1.49.7",
     "sinon": "^13.0.1",
     "sinon-chai": "^3.7.0",
-    "vue-template-compiler": "^2.6.14"
+    "vue-template-compiler": "^2.6.14",
+    "vuepress": "^1.9.7"
   },
   "alias": {
     "vue": "./node_modules/vue/dist/vue.common.js"

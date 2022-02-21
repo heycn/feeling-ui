@@ -2,7 +2,7 @@
   <button class="f-button" :class="{ [`icon-${iconPosition}`]: true }" @click="$emit('click')">
     <f-icon class="icon" v-if="icon && !loading" :name="icon"></f-icon>
     <f-icon class="loading icon" v-if="loading" name="loading"></f-icon>
-    <div class="content">
+    <div class="f-button-content">
       <slot />
     </div>
   </button>
@@ -34,6 +34,14 @@
 </script>
 
 <style lang="scss" scoped>
+  $font-size: 14px;
+  $button-height: 32px;
+  $button-bg: white;
+  $button-active-bg: #eee;
+  $border-radius: 4px;
+  $color: #333;
+  $border-color: #999;
+  $border-color-hover: #666;
   @keyframes spin {
     0% {
       transform: rotate(0deg);
@@ -42,51 +50,44 @@
       transform: rotate(360deg);
     }
   }
-
   .f-button {
-    font-size: var(--font-size);
-    height: var(--button-height);
+    font-size: $font-size;
+    height: $button-height;
     padding: 0 1em;
-    border-radius: var(--border-radius);
-    border: 1px solid var(--border-color);
-    background: var(--button-bg);
+    border-radius: $border-radius;
+    border: 1px solid $border-color;
+    background: $button-bg;
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    vertical-align: middle; /* 解决 align-items: center; 带来的对不齐 */
-
+    vertical-align: middle;
     &:hover {
-      border-color: var(--border-color-hover);
+      border-color: $border-color-hover;
     }
     &:active {
-      background-color: var(--button-active-bg);
+      background-color: $button-active-bg;
     }
     &:focus {
       outline: none;
     }
-
-    /* 默认 icon 在左边 */
-    > .icon {
-      order: 1;
-      margin-right: 0.3em;
-      margin-left: 0;
-    }
-    > .content {
+    > .f-button-content {
       order: 2;
     }
+    > .icon {
+      order: 1;
+      margin-right: 0.1em;
+    }
 
-    /* 设置 icon-position 为 right 时，icon 在右边*/
     &.icon-right {
+      > .f-button-content {
+        order: 1;
+      }
       > .icon {
         order: 2;
         margin-right: 0;
-        margin-left: 0.3em;
-      }
-      > .content {
-        order: 1;
+        margin-left: 0.1em;
       }
     }
-
     .loading {
       animation: spin 1.5s infinite linear;
     }
