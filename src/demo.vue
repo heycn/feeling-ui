@@ -1,8 +1,5 @@
 <template>
   <div>
-    <p>{{ (selected && selected[0] && selected[0].name) || '空' }}</p>
-    <p>{{ (selected && selected[1] && selected[1].name) || '空' }}</p>
-    <p>{{ (selected && selected[2] && selected[2].name) || '空' }}</p>
     <div style="padding: 20px">
       <f-cascader
         :source.sync="source"
@@ -13,13 +10,19 @@
         :load-data="loadData"
       ></f-cascader>
     </div>
-    {{ source }}
+    <f-popover>
+      <template>
+        <button>点我</button>
+      </template>
+      <template slot="content"> 弹出内容 </template>
+    </f-popover>
   </div>
 </template>
 <script>
   import Button from './button'
   import Cascader from './cascader'
   import db from './db'
+  import Popover from './popover'
 
   function ajax(parentId = 0) {
     return new Promise((success, fail) => {
@@ -41,7 +44,8 @@
     name: 'demo',
     components: {
       'f-button': Button,
-      'f-cascader': Cascader
+      'f-cascader': Cascader,
+      'f-popover': Popover
     },
     data() {
       return {
