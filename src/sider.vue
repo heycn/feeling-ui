@@ -1,38 +1,104 @@
 <template>
-  <transition name="slide">
-    <div class="sider" v-if="visible">
-      <slot></slot>
-      <button @click="visible = false">close</button>
+  <div class="f-slides">
+    <div class="f-slides-window" ref="window">
+      <div class="f-slides-wrapper">
+        <slot></slot>
+      </div>
     </div>
-  </transition>
+    <div class="f-slides-dots">
+      <span v-for="n in childrenLength" :class="{ active: selectedIndex === n - 1 }" @click="select(n - 1)">
+        {{ n - 1 }}
+      </span>
+    </div>
+  </div>
 </template>
+
 <script>
   export default {
-    name: 'FeelSider',
-    data() {
-      return {
-        visible: true
+    props: {
+      selected: {
+        type: String
+      },
+      autoPlay: {
+        type: Boolean,
+        default: true
       }
     },
-    methods: {}
+    data() {
+      return {
+        childrenLength: 0,
+        lastSelectedIndex: undefined
+      }
+    },
+    mounted() {
+      this.updateChildren()
+      this.playAutomatically()
+      this.childrenLength = this.$children.length
+    },
+    updated() {
+      this.updateChildren()
+    },
+    computed: {
+      selectedIndex() {
+        return this.names.indexOf(this.selected) || 0
+      },
+      names() {
+        return this.$children.map(vm => vm.name)
+      }
+    },
+    methods: {
+      playAutomatically() {
+        let index = this.names.indexOf(this.getSelected())
+        let run = () => {
+          let newIndex = index - 1
+          if (newIndex === -1) {
+            newIndex = this.names.length - 1
+          }
+          if (newIndex === this.names.length) {
+            newIndex = 0
+          }
+          this.select(newIndex)
+          setTimeout(run, 3000)
+        }
+        // setTimeout(run, 3000)
+        // 用 setTimeout 模拟 setInterval
+      },
+      select(index) {
+        this.lastSelectedIndex = this.selectedIndex
+        this.$emit('update:selected', this.names[index])
+      },
+      getSelected() {
+        let first = this.$children[0]
+        return this.selected || first.name
+      },
+      updateChildren() {
+        let selected = this.getSelected()
+        this.$children.forEach(vm => {
+          vm.reverse = this.selectedIndex > this.lastSelectedIndex ? false : true
+          this.$nextTick(() => {
+            vm.selected = selected
+          })
+        })
+      }
+    }
   }
 </script>
 
 <style lang="scss" scoped>
-  .sider {
-    position: relative;
-    > button {
-      position: absolute;
-      top: 0;
-      right: 0;
+  .f-slides {
+    border: 1px solid black;
+    &-window {
+      overflow: hidden;
     }
-  }
-  .slide-enter-active,
-  .slide-leave-active {
-    transition: all 0.3s;
-  }
-  .slide-enter,
-  .slide-leave-to {
-    margin-left: -200px;
+    &-wrapper {
+      position: relative;
+    }
+    &-dots {
+      > span {
+        &.active {
+          background: red;
+        }
+      }
+    }
   }
 </style>
