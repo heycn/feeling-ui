@@ -1,15 +1,14 @@
 <template>
   <button class="f-button" :class="{ [`icon-${iconPosition}`]: true }" @click="$emit('click')">
-    <f-icon class="icon" v-if="icon && !loading" :name="icon"></f-icon>
+    <f-icon class="icon" v-if="icon && !loading" :name="icon" />
     <f-icon class="loading icon" v-if="loading" name="loading"></f-icon>
     <div class="f-button-content">
       <slot />
     </div>
   </button>
 </template>
-
 <script>
-  import Icon from './icon.vue'
+  import Icon from './icon'
   export default {
     name: 'FeelButton',
     components: {
@@ -25,24 +24,14 @@
         type: String,
         default: 'left',
         validator(value) {
-          // return value !== 'left' && value !== 'right' ? false : true
           return value === 'left' || value === 'right'
         }
       }
     }
   }
 </script>
-
 <style lang="scss" scoped>
   @import 'var';
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
   .f-button {
     font-size: $font-size;
     height: $button-height;
