@@ -1,32 +1,13 @@
 <template>
-  <div style="padding-top: 16px;">
-    <h2>布局</h2>
-    <p>
-      <strong>预览</strong>
-    </p>
-
-
-    <g-layout style="color: white; overflow:hidden; margin-bottom:50px;">
-      <g-header style="height: 50px; background:lightskyblue;">
-        header
-      </g-header>
-      <g-layout>
-        <g-sider style="height: 100px; background:#ddd; width:200px; color: black;">
-          sider
-        </g-sider>
-        <g-content style="height: 100px; background:deepskyblue;">
-          content
-        </g-content>
-      </g-layout>
-      <g-footer style="height: 50px; background:lightskyblue;">
-        footer
-      </g-footer>
-    </g-layout>
-
-    <p>
-      <strong>代码</strong>
-    </p>
-    <pre><code>{{content}}</code></pre>
+  <div style="padding-top: 16px; text-align: center">
+    <f-layout style="color: #fff; overflow: hidden; margin-bottom: 50px">
+      <f-header style="height: 50px; background: #4d6d94"> header </f-header>
+      <f-layout>
+        <f-sider style="height: 100px; background: #5d7da5; width: 200px"> sider </f-sider>
+        <f-content style="height: 100px; background: #5c82b1"> content </f-content>
+      </f-layout>
+      <f-footer style="height: 50px; background: #4d6d94"> footer </f-footer>
+    </f-layout>
   </div>
 </template>
 <style scoped>
@@ -35,35 +16,13 @@
   }
 </style>
 <script>
-  import GLayout from '../../../src/layout/layout'
-  import GHeader from '../../../src/layout/header'
-  import GFooter from '../../../src/layout/footer'
-  import GContent from '../../../src/layout/content'
-  import GSider from '../../../src/layout/sider'
+  import FLayout from '../../../src/layout'
+  import FHeader from '../../../src/header'
+  import FFooter from '../../../src/footer'
+  import FContent from '../../../src/content'
+  import FSider from '../../../src/sider'
 
   export default {
-    components: {GLayout, GHeader, GFooter, GContent, GSider},
-    data () {
-      return {
-        content: `
-          <g-layout style="color: white; overflow:hidden; margin-bottom:50px;">
-            <g-header style="height: 50px; background:lightskyblue;">
-              header
-            </g-header>
-            <g-layout>
-              <g-sider style="height: 100px; background:#ddd; width:200px; color: black;">
-                sider
-              </g-sider>
-              <g-content style="height: 100px; background:deepskyblue;">
-                content
-              </g-content>
-            </g-layout>
-            <g-footer style="height: 50px; background:lightskyblue;">
-              footer
-            </g-footer>
-          </g-layout>
-      `.replace(/^ {8}/gm, '').trim()
-      }
-    }
+    components: { FLayout, FHeader, FFooter, FContent, FSider }
   }
 </script>

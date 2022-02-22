@@ -1,37 +1,35 @@
 <template>
-  <div class="page" style="position: relative">
-    <f-date-range-picker :value="d" @input="d = $event" :scope="scope"></f-date-range-picker>
-    <p>其他内容</p>
+  <div>
+    <f-button>点我</f-button>
+
+    <div>
+      <f-cascader :source="source" />
+    </div>
   </div>
 </template>
-<style>
-  .page {
-    padding: 100px;
-  }
-</style>
-<script>
-  import FDatePicker from './date-picker/date-picker'
-  import FDateRangePicker from './date-picker/date-range-picker'
 
+<script>
+  import button from './button'
+  import cascader from '@/cascader/cascader'
   export default {
     name: 'demo',
-    components: { FDatePicker, FDateRangePicker },
+    components: {
+      'f-button': button,
+      'f-cascader': cascader
+    },
     data() {
       return {
-        d: [],
-        scope: [new Date(1958, 1), new Date(2118, 5)]
+        source: [
+          {
+            name: '你好',
+            children: [{ name: '我好' }, { name: '她好' }, { name: '他好' }]
+          },
+          {
+            name: '食物',
+            children: [{ name: '麻辣烫' }, { name: '臭豆腐' }]
+          }
+        ]
       }
     }
   }
 </script>
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  body {
-    background: white;
-  }
-</style>
-<style scoped lang="scss"></style>

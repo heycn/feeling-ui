@@ -1,37 +1,37 @@
-const path = require('path')
 module.exports = {
   base: '/feeling-ui/',
-  title: '轱辘UI',
-  description: '一个好用的UI框架',
+  head: [['link', { rel: 'icon', href: 'hero.jpg' }]],
+  title: 'FeelingUI',
+  description: '一个不太一样的 UI 框架',
   themeConfig: {
+    logo: '/assets/img/logo.png',
     nav: [
       { text: '主页', link: '/' },
-      { text: '文档', link: '/guide/' },
-      { text: '交流', link: 'https://google.com' }
+      { text: '文档', link: '/introduce/' },
+      { text: 'Vue3 版本', link: 'https://heycn.github.io/flag-ui-website' },
+      { text: 'Github', link: 'https://github.com/heycn/feeling-ui' }
     ],
+    displayAllHeaders: true, // 默认值：false
     sidebar: [
       {
-        title: '入门',
         collapsable: false,
-        children: ['/install/', '/get-started/']
+        title: '入门',
+        children: ['/introduce/', '/install/']
       },
       {
         title: '组件',
         collapsable: false,
         children: [
           '/components/button',
-          '/components/tabs',
-          '/components/input',
-          '/components/grid',
-          '/components/layout',
           '/components/toast',
           '/components/popover',
-          '/components/slides'
+          '/components/input',
+          '/components/tabs',
+          '/components/layout',
+          '/components/grid',
+          '/components/collapse'
         ]
       }
     ]
-  },
-  scss: {
-    includePaths: [path.join(__dirname, '../../styles')]
   }
 }

@@ -1,88 +1,37 @@
 <template>
-  <div style="padding-top: 16px;">
-    <h2>支持 HTML</h2>
-    <p>
-      <strong>预览</strong>
-    </p>
-
-    <g-popover>
-      <g-button>上方弹出</g-button>
+  <div style="padding-top: 16px">
+    <f-popover position="left">
+      <f-button>左边弹出</f-button>
       <template slot="content">
-        弹出内容
+        <strong style="color: #06f">支持加粗</strong>
       </template>
-    </g-popover>
-    <g-popover position="bottom">
-      <g-button>下方弹出</g-button>
+    </f-popover>
+    <f-popover>
+      <f-button>上方弹出</f-button>
       <template slot="content">
-        弹出内容
+        <a href="https://www.baidu.com/">支持链接</a>
       </template>
-    </g-popover>
-    <g-popover position="left">
-      <g-button>左边弹出</g-button>
-      <template slot="content">
-        弹出内容
-      </template>
-    </g-popover>
-    <g-popover position="right">
-      <g-button>右边弹出</g-button>
-      <template slot="content">
-        弹出内容
-      </template>
-    </g-popover>
-
-    <p>
-      <strong>代码</strong>
-    </p>
-    <pre><code>{{content}}</code></pre>
+    </f-popover>
+    <f-popover position="bottom">
+      <f-button>下方弹出</f-button>
+      <template slot="content">普通文本</template>
+    </f-popover>
+    <f-popover position="right">
+      <f-button>右边弹出</f-button>
+      <template slot="content">普通文本</template>
+    </f-popover>
   </div>
 </template>
-<style>
-</style>
-<style scoped>
-</style>
+
 <script>
-  import GButton from '../../../src/button/button'
-  import GPopover from '../../../src/popover'
-
-
+  import FButton from '../../../src/button'
+  import FPopover from '../../../src/popover'
   export default {
-    components: {GButton, GPopover},
-    data () {
-      return {
-        content: `
-          <g-popover>
-            <g-button>上方弹出</g-button>
-            <template slot="content">
-              弹出内容
-            </template>
-          </g-popover>
-          <g-popover position="bottom">
-            <g-button>下方弹出</g-button>
-            <template slot="content">
-              弹出内容
-            </template>
-          </g-popover>
-          <g-popover position="left">
-            <g-button>左边弹出</g-button>
-            <template slot="content">
-              弹出内容
-            </template>
-          </g-popover>
-          <g-popover position="right">
-            <g-button>右边弹出</g-button>
-            <template slot="content">
-              弹出内容
-            </template>
-          </g-popover>
-      `.replace(/^ {8}/gm, '').trim()
-      }
-    },
-    methods: {
-      onClickButton () {
-        this.$toast('<strong style="color:red;">加粗的提示</strong>', {
-          enableHtml: true
-        })
-      }
-    },
+    components: { FButton, FPopover }
   }
 </script>
+<style>
+  .feel-popover {
+    z-index: 30;
+  }
+</style>

@@ -1,10 +1,12 @@
 <template>
-  <svg class="f-icon" @click="$emit('click', $event)">
+  <svg class="f-icon">
     <use :xlink:href="`#i-${name}`"></use>
   </svg>
 </template>
+
 <script>
-  import './svg'
+  import './svg.js'
+
   export default {
     name: 'FeelIcon',
     props: ['name']

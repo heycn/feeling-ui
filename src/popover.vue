@@ -2,9 +2,9 @@
   <div class="popover" ref="popover">
     <div
       ref="contentWrapper"
-      class="feel-popover-content-wrapper"
+      class="content-wrapper feel-popover"
       v-if="visible"
-      :class="[{ [`position-${position}`]: true }, popClassName]"
+      :class="{ [`position-${position}`]: true }"
     >
       <slot name="content" :close="close"></slot>
     </div>
@@ -13,14 +13,28 @@
     </span>
   </div>
 </template>
-
 <script>
   export default {
     name: 'FeelPopover',
+    data() {
+      return { visible: false }
+    },
+    mounted() {
+      if (this.trigger === 'click') {
+        this.$refs.popover.addEventListener('click', this.onClick)
+      } else {
+        this.$refs.popover.addEventListener('mouseenter', this.open)
+        this.$refs.popover.addEventListener('mouseleave', this.close)
+      }
+    },
+    beforeDestroy() {
+      let div = document.querySelector('.content-wrapper')
+      if (div) {
+        div.parentNode.removeChild(div)
+      }
+      document.removeEventListener('click', this.onClickDocument)
+    },
     props: {
-      popClassName: {
-        type: String
-      },
       position: {
         type: String,
         default: 'top',
@@ -34,82 +48,34 @@
         validator(value) {
           return ['click', 'hover'].indexOf(value) >= 0
         }
-      },
-      container: {
-        type: Element
-      }
-    },
-    data() {
-      return {
-        visible: false
-      }
-    },
-    mounted() {
-      this.addPopoverListeners()
-    },
-    beforeDestroy() {
-      this.putBackContent()
-      this.removePopoverListeners()
-    },
-    computed: {
-      openEvent() {
-        if (this.trigger === 'click') {
-          return 'click'
-        } else {
-          return 'mouseenter'
-        }
-      },
-      closeEvent() {
-        if (this.trigger === 'click') {
-          return 'click'
-        } else {
-          return 'mouseleave'
-        }
       }
     },
     methods: {
-      addPopoverListeners() {
-        if (this.trigger === 'click') {
-          this.$refs.popover.addEventListener('click', this.onClick)
-        } else {
-          this.$refs.popover.addEventListener('mouseenter', this.open)
-          this.$refs.popover.addEventListener('mouseleave', this.close)
-        }
-      },
-      removePopoverListeners() {
-        if (this.trigger === 'click') {
-          this.$refs.popover.removeEventListener('click', this.onClick)
-        } else {
-          this.$refs.popover.removeEventListener('mouseenter', this.open)
-          this.$refs.popover.removeEventListener('mouseleave', this.close)
-        }
-      },
-      putBackContent() {
-        const { contentWrapper, popover } = this.$refs
-        if (!contentWrapper) {
-          return
-        }
-        popover.appendChild(contentWrapper)
-      },
       positionContent() {
         const { contentWrapper, triggerWrapper } = this.$refs
-        ;(this.container || document.body).appendChild(contentWrapper)
+        document.body.appendChild(contentWrapper)
         const { width, height, top, left } = triggerWrapper.getBoundingClientRect()
         const { height: height2 } = contentWrapper.getBoundingClientRect()
-        let positions = {
-          top: { top: top + window.scrollY, left: left + window.scrollX },
-          bottom: { top: top + height + window.scrollY, left: left + window.scrollX },
+        const positions = {
+          top: {
+            top: top + window.scrollY,
+            left: left + window.scrollX
+          },
+          bottom: {
+            top: top + height + window.scrollY,
+            left: left + window.scrollX
+          },
           left: {
             top: top + window.scrollY + (height - height2) / 2,
             left: left + window.scrollX
           },
           right: {
             top: top + window.scrollY + (height - height2) / 2,
-            left: left + window.scrollX + width
+            left: left + width + window.scrollX
           }
         }
-        contentWrapper.style.left = positions[this.position].left + 'px'
         contentWrapper.style.top = positions[this.position].top + 'px'
+        contentWrapper.style.left = positions[this.position].left + 'px'
       },
       onClickDocument(e) {
         if (this.$refs.popover && (this.$refs.popover === e.target || this.$refs.popover.contains(e.target))) {
@@ -125,7 +91,6 @@
       },
       open() {
         this.visible = true
-        this.$emit('open')
         this.$nextTick(() => {
           this.positionContent()
           document.addEventListener('click', this.onClickDocument)
@@ -133,7 +98,6 @@
       },
       close() {
         this.visible = false
-        this.$emit('close')
         document.removeEventListener('click', this.onClickDocument)
       },
       onClick(event) {
@@ -148,31 +112,32 @@
     }
   }
 </script>
-
 <style scoped lang="scss">
-  $border-color: #333;
-  $border-radius: 4px;
+  @import 'helper';
   .popover {
     display: inline-block;
     vertical-align: top;
     position: relative;
   }
-  .feel-popover-content-wrapper {
+
+  .content-wrapper {
     position: absolute;
-    border: 1px solid $border-color;
+    border: solid 1px $popover-border-color;
     border-radius: $border-radius;
     filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
     background: white;
     padding: 0.5em 1em;
+    max-width: 20em;
     word-break: break-all;
     &::before,
     &::after {
       content: '';
       display: block;
-      border: 10px solid transparent;
+      border: solid 10px transparent;
       width: 0;
       height: 0;
       position: absolute;
+      //left: 10px;
     }
     &.position-top {
       transform: translateY(-100%);
@@ -199,13 +164,13 @@
         left: 10px;
       }
       &::before {
-        border-top: none;
         border-bottom-color: black;
+        border-top: none;
         bottom: 100%;
       }
       &::after {
-        border-top: none;
         border-bottom-color: white;
+        border-top: none;
         bottom: calc(100% - 1px);
       }
     }

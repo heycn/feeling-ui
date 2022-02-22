@@ -1,26 +1,10 @@
 <template>
-  <div style="padding-top: 16px;">
-    <h2>布局</h2>
-    <p>
-      <strong>预览</strong>
-    </p>
-
-    <g-layout style="color: white; margin-bottom:50px;">
-      <g-header style="height: 50px; background:lightskyblue;">
-        header
-      </g-header>
-      <g-content style="height: 100px; background:deepskyblue;">
-        content
-      </g-content>
-      <g-footer style="height: 50px; background:lightskyblue;">
-        footer
-      </g-footer>
-    </g-layout>
-
-    <p>
-      <strong>代码</strong>
-    </p>
-    <pre><code>{{content}}</code></pre>
+  <div style="padding-top: 16px">
+    <f-layout style="color: #fff; text-align: center; margin-bottom: 50px">
+      <f-header style="height: 50px; background: #a2aec8">header</f-header>
+      <f-content style="height: 100px; background: #5e7297">content</f-content>
+      <f-footer style="height: 50px; background: #a2aec8">footer</f-footer>
+    </f-layout>
   </div>
 </template>
 <style scoped>
@@ -29,31 +13,13 @@
   }
 </style>
 <script>
-  import GLayout from '../../../src/layout/layout'
-  import GHeader from '../../../src/layout/header'
-  import GFooter from '../../../src/layout/footer'
-  import GContent from '../../../src/layout/content'
-  import GSider from '../../../src/layout/sider'
+  import FLayout from '../../../src/layout'
+  import FHeader from '../../../src/header'
+  import FFooter from '../../../src/footer'
+  import FContent from '../../../src/content'
+  import FSider from '../../../src/sider'
 
   export default {
-    components: {GLayout, GHeader, GFooter, GContent, GSider},
-    data () {
-      return {
-        content: `
-          <g-layout style="color: white; margin-bottom:50px;">
-            <g-header style="height: 50px; background:lightskyblue;">
-              header
-            </g-header>
-            <g-content style="height: 100px; background:deepskyblue;">
-              content
-            </g-content>
-            <g-footer style="height: 50px; background:lightskyblue;">
-              footer
-            </g-footer>
-          </g-layout>
-
-      `.replace(/^ {8}/gm, '').trim()
-      }
-    }
+    components: { FLayout, FHeader, FFooter, FContent, FSider }
   }
 </script>

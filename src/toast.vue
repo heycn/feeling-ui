@@ -1,19 +1,17 @@
 <template>
-  <div class="feel-toast" :class="toastClasses">
+  <div class="wrapper feel-toast" :class="toastClasses">
     <div class="toast" ref="toast">
       <div class="message">
         <slot v-if="!enableHtml"></slot>
         <div v-else v-html="$slots.default[0]"></div>
       </div>
       <div class="line" ref="line"></div>
-      <span class="close" v-if="closeButton" @click="onClickClose">
-        {{ closeButton.text }}
-      </span>
+      <span class="close" v-if="closeButton" @click="onClickClose">{{ closeButton.text }}</span>
     </div>
   </div>
 </template>
 <script>
-  //构造组件的选项
+  // 构造组件的选项
   export default {
     name: 'FeelToast',
     props: {
@@ -41,7 +39,7 @@
         type: String,
         default: 'top',
         validator(value) {
-          return ['top', 'bottom', 'middle'].indexOf(value) >= 0
+          return ['top', 'middle', 'bottom'].indexOf(value) >= 0
         }
       }
     },
@@ -58,6 +56,7 @@
     },
     methods: {
       updateStyles() {
+        // 解决父元素设置了 min-height 之后，子元素 height:100% 没作用的问题
         this.$nextTick(() => {
           this.$refs.line.style.height = `${this.$refs.toast.getBoundingClientRect().height}px`
         })
@@ -77,16 +76,17 @@
       onClickClose() {
         this.close()
         if (this.closeButton && typeof this.closeButton.callback === 'function') {
-          this.closeButton.callback(this) //this === toast实例
+          this.closeButton.callback(this) // this === toast 实例 |  将toast实例传给callback，callback里就可调用toast里的方法
         }
+      },
+      log() {
+        console.log('回调执行')
       }
     }
   }
 </script>
-<style scoped lang="scss">
-  $font-size: 14px;
-  $toast-min-height: 40px;
-  $toast-bg: rgba(0, 0, 0, 0.75);
+<style lang="scss" scoped>
+  @import 'helper';
   @keyframes slide-up {
     0% {
       opacity: 0;
@@ -115,7 +115,8 @@
       opacity: 1;
     }
   }
-  .feel-toast {
+  // wrapper 负责居中定位， toast 负责动画
+  .wrapper {
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
@@ -123,17 +124,9 @@
     &.position-top {
       top: 0;
       .toast {
+        animation: slide-down $animation-duration;
         border-top-left-radius: 0;
         border-top-right-radius: 0;
-        animation: slide-down $animation-duration;
-      }
-    }
-    &.position-bottom {
-      bottom: 0;
-      .toast {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-        animation: slide-up $animation-duration;
       }
     }
     &.position-middle {
@@ -143,25 +136,33 @@
         animation: fade-in $animation-duration;
       }
     }
+    &.position-bottom {
+      bottom: 0;
+      .toast {
+        animation: slide-up $animation-duration;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
   }
   .toast {
     font-size: $font-size;
+    color: #fff;
     min-height: $toast-min-height;
     line-height: 1.8;
+    padding: 0 16px;
     display: flex;
-    color: white;
     align-items: center;
     background: $toast-bg;
     border-radius: 4px;
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
-    padding: 0 16px;
     .message {
       padding: 8px 0;
     }
     .close {
+      cursor: pointer;
       padding-left: 16px;
       flex-shrink: 0;
-      cursor: pointer;
     }
     .line {
       height: 100%;
