@@ -34,20 +34,11 @@
       }
     },
     mounted() {
-      if (this.trigger === 'click') {
-        this.$refs.popover.addEventListener('click', this.onClick)
-      } else {
-        this.$refs.popover.addEventListener('mouseenter', this.open)
-        this.$refs.popover.addEventListener('mouseleave', this.close)
-      }
+      this.addPopoverListeners()
     },
     beforeDestroy() {
-      if (this.trigger === 'click') {
-        this.$refs.popover.removeEventListener('click', this.onClick)
-      } else {
-        this.$refs.popover.removeEventListener('mouseenter', this.open)
-        this.$refs.popover.removeEventListener('mouseleave', this.close)
-      }
+      this.putBackContent()
+      this.removePopoverListeners()
     },
     computed: {
       openEvent() {
@@ -66,20 +57,37 @@
       }
     },
     methods: {
+      addPopoverListeners() {
+        if (this.trigger === 'click') {
+          this.$refs.popover.addEventListener('click', this.onClick)
+        } else {
+          this.$refs.popover.addEventListener('mouseenter', this.open)
+          this.$refs.popover.addEventListener('mouseleave', this.close)
+        }
+      },
+      removePopoverListeners() {
+        if (this.trigger === 'click') {
+          this.$refs.popover.removeEventListener('click', this.onClick)
+        } else {
+          this.$refs.popover.removeEventListener('mouseenter', this.open)
+          this.$refs.popover.removeEventListener('mouseleave', this.close)
+        }
+      },
+      putBackContent() {
+        const { contentWrapper, popover } = this.$refs
+        if (!contentWrapper) {
+          return
+        }
+        popover.appendChild(contentWrapper)
+      },
       positionContent() {
         const { contentWrapper, triggerWrapper } = this.$refs
         document.body.appendChild(contentWrapper)
         const { width, height, top, left } = triggerWrapper.getBoundingClientRect()
         const { height: height2 } = contentWrapper.getBoundingClientRect()
         let positions = {
-          top: {
-            top: top + window.scrollY,
-            left: left + window.scrollX
-          },
-          bottom: {
-            top: top + height + window.scrollY,
-            left: left + window.scrollX
-          },
+          top: { top: top + window.scrollY, left: left + window.scrollX },
+          bottom: { top: top + height + window.scrollY, left: left + window.scrollX },
           left: {
             top: top + window.scrollY + (height - height2) / 2,
             left: left + window.scrollX
@@ -128,7 +136,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
   $border-color: #333;
   $border-radius: 4px;
   .popover {
