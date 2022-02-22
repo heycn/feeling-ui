@@ -14,8 +14,8 @@
   </div>
 </template>
 <script>
-  import FSlides from './slides'
-  import FSlidesItem from './slides-item'
+  import FSlides from './slides/slides'
+  import FSlidesItem from './slides/slides-item'
 
   export default {
     name: 'demo',

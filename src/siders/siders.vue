@@ -32,7 +32,7 @@
 </template>
 
 <script>
-  import FIcon from './icon'
+  import FIcon from '../icon'
   export default {
     components: { FIcon },
     props: {

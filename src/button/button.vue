@@ -31,7 +31,7 @@
   }
 </script>
 <style lang="scss" scoped>
-  @import 'var';
+  @import '../var'; // webpack 配置 scss 根目录
   .f-button {
     font-size: $font-size;
     height: $button-height;
