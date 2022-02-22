@@ -1,72 +1,14 @@
 <template>
-  <div class="form-wrapper">
-    <form class="form" @submit.prevent="onSubmit">
-      <h1>登录</h1>
-      <demo-form-row label="邮箱" :error="errors.email">
-        <f-input type="text" v-model="user.email"></f-input>
-      </demo-form-row>
-      <demo-form-row label="密码" :error="errors.password">
-        <f-input type="password" v-model="user.password"></f-input>
-      </demo-form-row>
-      <div>
-        <f-button class="ok" type="submit">提交</f-button>
-      </div>
-    </form>
+  <div style="margin: 20px">
+    <f-pager :total-page="20" :current-page="3"></f-pager>
   </div>
 </template>
-<style>
-  body {
-    background: #888;
-  }
-</style>
-<style scoped lang="scss">
-  .form {
-    background: white;
-    padding: 24px;
-    border-radius: 8px;
-    margin-top: 36px;
-    min-height: 60vh;
-    &-wrapper {
-      display: flex;
-      justify-content: center;
-    }
-    .controls {
-    }
-    .ok {
-      display: block;
-      width: 100%;
-      margin-top: 24px;
-    }
-  }
-</style>
 <script>
-  import FButton from './button/button'
-  import FInput from './input'
-  import DemoFormRow from './demo-form-row'
-  import formMixin from './form-mixin'
+  import FPager from './pager'
 
   export default {
     name: 'demo',
-    components: { FButton, FInput, DemoFormRow },
-    mixins: [formMixin],
-    data() {
-      return {
-        user: {
-          email: '',
-          password: ''
-        },
-        rules: [
-          { key: 'email', pattern: 'email', required: true },
-          { key: 'password', minLength: 6, required: true }
-        ]
-      }
-    },
-    methods: {
-      onSubmit() {
-        this.validate(this.user)
-        console.log(this.errors)
-      }
-    }
+    components: { FPager }
   }
 </script>
 <style>
@@ -75,4 +17,8 @@
     padding: 0;
     box-sizing: border-box;
   }
+  body {
+    background: white;
+  }
 </style>
+<style scoped lang="scss"></style>
