@@ -6,11 +6,18 @@
         <f-icon name="right"></f-icon>
       </span>
     </span>
-    <transition @enter="enter" @leave="leave" @after-leave="afterLeave" @after-enter="afterEnter">
-      <div class="f-sub-nav-popover" v-show="open" :class="{ vertical }">
+    <template v-if="vertical">
+      <transition @enter="enter" @leave="leave" @after-leave="afterLeave" @after-enter="afterEnter">
+        <div class="f-sub-nav-popover" v-show="open" :class="{ vertical }">
+          <slot></slot>
+        </div>
+      </transition>
+    </template>
+    <template v-else>
+      <div class="f-sub-nav-popover" v-show="open">
         <slot></slot>
       </div>
-    </transition>
+    </template>
   </div>
 </template>
 
@@ -83,6 +90,15 @@
 
 <style scoped lang="scss">
   @import 'var';
+  .x-enter-active,
+  .x-leave-active {
+  }
+  .x-enter,
+  .x-leave-to {
+  }
+  .x-enter-to,
+  .x-leave {
+  }
   .f-sub-nav {
     position: relative;
     &.active {
@@ -103,6 +119,7 @@
       display: none;
     }
     &-popover {
+      transition: height 250ms;
       background: white;
       position: absolute;
       top: 100%;
@@ -119,8 +136,6 @@
         border-radius: 0;
         border: none;
         box-shadow: none;
-        transition: height 250ms;
-        overflow: hidden;
       }
     }
   }

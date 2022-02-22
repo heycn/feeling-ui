@@ -20,7 +20,7 @@
       </f-sub-nav>
       <f-nav-item name="hire">招聘</f-nav-item>
     </f-nav>
-    <f-nav :selected.sync="selected" vertical style="width: 200px; margin: 20px">
+    <f-nav :selected.sync="selected" vertical style="margin: 20px; margin-top: 200px">
       <f-nav-item name="home">首页</f-nav-item>
       <f-sub-nav name="about">
         <template slot="title">关于</template>
