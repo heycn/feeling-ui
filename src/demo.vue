@@ -1,9 +1,7 @@
 <template>
   <div>
     <f-nav :selected.sync="selected" style="margin: 20px">
-      <f-nav-item name="home">
-        <a href="https://jirengu.com" target="_blank"> 首页 </a>
-      </f-nav-item>
+      <f-nav-item name="home"> 首页 </f-nav-item>
       <f-sub-nav name="about">
         <template slot="title">关于</template>
         <f-nav-item name="culture">企业文化</f-nav-item>
@@ -42,7 +40,7 @@
       </f-sub-nav>
       <f-nav-item name="hire">招聘</f-nav-item>
     </f-nav>
-    <p>你好，我是中文</p>
+    <p>用户选中了 {{ selected }}</p>
   </div>
 </template>
 <script>
@@ -55,7 +53,22 @@
     components: { FNav, FNavItem, FSubNav },
     data() {
       return {
-        selected: ['culture']
+        selected: 'culture'
+      }
+    },
+    methods: {
+      onChange(selected) {
+        console.log(selected)
+        if (selected.indexOf('home') >= 0) {
+          alert('hi')
+        }
+      }
+    },
+    watch: {
+      selected(newValue) {
+        if (newValue === 'home') {
+          alert('hi')
+        }
       }
     }
   }
