@@ -13,8 +13,8 @@
               <div class="feel-table-header">
                 {{ column.text }}
                 <span v-if="column.field in orderBy" class="feel-table-sorter" @click="changeOrderBy(column.field)">
-                  <g-icon name="asc" :class="{ active: orderBy[column.field] === 'asc' }" />
-                  <g-icon name="desc" :class="{ active: orderBy[column.field] === 'desc' }" />
+                  <f-icon name="asc" :class="{ active: orderBy[column.field] === 'asc' }" />
+                  <f-icon name="desc" :class="{ active: orderBy[column.field] === 'desc' }" />
                 </span>
               </div>
             </th>
@@ -25,14 +25,21 @@
           <template v-for="(item, index) in dataSource">
             <tr :key="item.id">
               <td v-if="expendField" :style="{ width: '50px' }" class="feel-table-center">
-                <g-icon class="feel-table-expendIcon" name="right" @click="expendItem(item.id)" />
+                <f-icon class="feel-table-expendIcon" name="right" @click="expendItem(item.id)" />
               </td>
               <td v-if="checkable" :style="{ width: '50px' }" class="feel-table-center">
                 <input type="checkbox" @change="onChangeItem(item, index, $event)" :checked="inSelectedItems(item)" />
               </td>
               <td :style="{ width: '50px' }" v-if="numberVisible">{{ index + 1 }}</td>
               <template v-for="column in columns">
-                <td :style="{ width: column.width + 'px' }" :key="column.field">{{ item[column.field] }}</td>
+                <td :style="{ width: column.width + 'px' }" :key="column.field">
+                  <template v-if="column.render">
+                    <vnodes :vnodes="column.render({ value: item[column.field] })"></vnodes>
+                  </template>
+                  <template v-else>
+                    {{ item[column.field] }}
+                  </template>
+                </td>
               </template>
               <td v-if="$scopedSlots.default">
                 <div ref="actions" style="display: inline-block">
@@ -50,7 +57,7 @@
       </table>
     </div>
     <div v-if="loading" class="feel-table-loading">
-      <g-icon name="loading" />
+      <f-icon name="loading" />
     </div>
   </div>
 </template>
@@ -58,11 +65,18 @@
 <script>
   import FIcon from './icon'
   export default {
-    components: { FIcon },
+    components: {
+      FIcon,
+      vnodes: {
+        functional: true,
+        render: (h, context) => context.props.vnodes
+      }
+    },
     name: 'FeelTable',
     data() {
       return {
-        expendedIds: []
+        expendedIds: [],
+        columns: []
       }
     },
     props: {
@@ -92,10 +106,6 @@
         type: Boolean,
         default: false
       },
-      columns: {
-        type: Array,
-        required: true
-      },
       dataSource: {
         type: Array,
         required: true,
@@ -117,6 +127,14 @@
       }
     },
     mounted() {
+      this.columns = this.$slots.default.map(node => {
+        let { text, field, width } = node.componentOptions.propsData
+        let render = node.data.scopedSlots && node.data.scopedSlots.default
+        return { text, field, width, render }
+      })
+      let result = this.columns[0].render({ value: '方方' })
+      console.log(result)
+
       let table2 = this.$refs.table.cloneNode(false)
       this.table2 = table2
       table2.classList.add('feel-table-copy')
