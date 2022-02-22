@@ -1,8 +1,8 @@
 <template>
-  <button class="f-button" :class="{ [`icon-${iconPosition}`]: true }" @click="$emit('click')">
+  <button class="feel-button" :class="{ [`icon-${iconPosition}`]: true }" @click="$emit('click')">
     <f-icon class="icon" v-if="icon && !loading" :name="icon" />
     <f-icon class="loading icon" v-if="loading" name="loading"></f-icon>
-    <div class="f-button-content">
+    <div class="feel-button-content">
       <slot />
     </div>
   </button>
@@ -32,7 +32,7 @@
 </script>
 <style lang="scss" scoped>
   @import 'var'; // webpack 配置 scss 根目录
-  .f-button {
+  .feel-button {
     font-size: $font-size;
     height: $button-height;
     padding: 0 1em;
@@ -52,7 +52,7 @@
     &:focus {
       outline: none;
     }
-    > .f-button-content {
+    > .feel-button-content {
       order: 2;
     }
     > .icon {
@@ -61,7 +61,7 @@
     }
 
     &.icon-right {
-      > .f-button-content {
+      > .feel-button-content {
         order: 1;
       }
       > .icon {
@@ -72,6 +72,9 @@
     }
     .loading {
       @include spin;
+    }
+    & + & {
+      margin-left: 4px;
     }
   }
 </style>

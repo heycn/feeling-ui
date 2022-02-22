@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper" :class="{ error }">
     <input
+      ref="input"
       :value="value"
       type="text"
       :disabled="disabled"
@@ -16,16 +17,15 @@
     </template>
   </div>
 </template>
-
 <script>
-  import Icon from './icon.vue'
+  import Icon from './icon'
 
   export default {
-    name: 'FeelInput',
     components: { Icon },
+    name: 'FeelInput',
     props: {
       value: {
-        type: String
+        type: [String, Date]
       },
       disabled: {
         type: Boolean,
@@ -38,10 +38,14 @@
       error: {
         type: String
       }
+    },
+    methods: {
+      setRawValue(value) {
+        this.$refs.input.value = value
+      }
     }
   }
 </script>
-
 <style lang="scss" scoped>
   @import 'var';
   .wrapper {
