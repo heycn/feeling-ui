@@ -1,6 +1,11 @@
 <template>
   <div class="popover" ref="popover">
-    <div ref="contentWrapper" class="content-wrapper" v-if="visible" :class="{ [`position-${position}`]: true }">
+    <div
+      ref="contentWrapper"
+      class="feel-popover-content-wrapper"
+      v-if="visible"
+      :class="[{ [`position-${position}`]: true }, popClassName]"
+    >
       <slot name="content" :close="close"></slot>
     </div>
     <span ref="triggerWrapper" style="display: inline-block">
@@ -13,6 +18,9 @@
   export default {
     name: 'FeelPopover',
     props: {
+      popClassName: {
+        type: String
+      },
       position: {
         type: String,
         default: 'top',
@@ -26,6 +34,9 @@
         validator(value) {
           return ['click', 'hover'].indexOf(value) >= 0
         }
+      },
+      container: {
+        type: Element
       }
     },
     data() {
@@ -82,7 +93,7 @@
       },
       positionContent() {
         const { contentWrapper, triggerWrapper } = this.$refs
-        document.body.appendChild(contentWrapper)
+        ;(this.container || document.body).appendChild(contentWrapper)
         const { width, height, top, left } = triggerWrapper.getBoundingClientRect()
         const { height: height2 } = contentWrapper.getBoundingClientRect()
         let positions = {
@@ -97,6 +108,7 @@
             left: left + window.scrollX + width
           }
         }
+        console.log(positions[this.position].left)
         contentWrapper.style.left = positions[this.position].left + 'px'
         contentWrapper.style.top = positions[this.position].top + 'px'
       },
@@ -144,7 +156,7 @@
     vertical-align: top;
     position: relative;
   }
-  .content-wrapper {
+  .feel-popover-content-wrapper {
     position: absolute;
     border: 1px solid $border-color;
     border-radius: $border-radius;
