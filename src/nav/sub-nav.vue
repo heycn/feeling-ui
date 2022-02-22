@@ -1,7 +1,10 @@
 <template>
   <div class="f-sub-nav" :class="{ active }" v-click-outside="close">
-    <span @click="onClick">
+    <span class="f-sub-nav-label" @click="onClick">
       <slot name="title"></slot>
+      <span class="f-sub-nav-icon" :class="{ open }">
+        <f-icon name="right"></f-icon>
+      </span>
     </span>
     <div class="f-sub-nav-popover" v-show="open">
       <slot></slot>
@@ -11,7 +14,9 @@
 
 <script>
   import ClickOutside from '../click-outside'
+  import FIcon from '../icon'
   export default {
+    components: { FIcon },
     directives: { ClickOutside },
     name: 'FeelSubNav',
     inject: ['root'],
@@ -64,9 +69,12 @@
         width: 100%;
       }
     }
-    > span {
+    &-label {
       padding: 10px 20px;
       display: block;
+    }
+    &-icon {
+      display: none;
     }
     &-popover {
       background: white;
@@ -82,9 +90,32 @@
       min-width: 8em;
     }
   }
-  .f-sub-nav .f-sub-nav .f-sub-nav-popover {
-    top: 0;
-    left: 100%;
-    margin-left: 8px;
+  .f-sub-nav .f-sub-nav {
+    &.active {
+      &::after {
+        display: none;
+      }
+    }
+    .f-sub-nav-popover {
+      top: 0;
+      left: 100%;
+      margin-left: 8px;
+    }
+    .f-sub-nav-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .f-sub-nav-icon {
+      transition: transform 250ms;
+      display: inline-flex;
+      margin-left: 1em;
+      svg {
+        fill: $light-color;
+      }
+      &.open {
+        transform: rotate(180deg);
+      }
+    }
   }
 </style>
