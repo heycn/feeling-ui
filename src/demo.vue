@@ -20,6 +20,7 @@
       </f-sub-nav>
       <f-nav-item name="hire">招聘</f-nav-item>
     </f-nav>
+    <p>你好，我是中文</p>
   </div>
 </template>
 <script>
