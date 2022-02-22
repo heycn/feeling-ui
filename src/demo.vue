@@ -1,31 +1,25 @@
 <template>
   <div>
-    <f-slides class="wrapper" width="300px" height="200px" :selected.sync="selected">
-      <f-slides-item name="1">
-        <div class="box">1</div>
-      </f-slides-item>
-      <f-slides-item name="2">
-        <div class="box">2</div>
-      </f-slides-item>
-      <f-slides-item name="3">
-        <div class="box">3</div>
-      </f-slides-item>
-    </f-slides>
+    <f-nav :selected.sync="selected">
+      <f-nav-item name="home">首页</f-nav-item>
+      <f-nav-item name="about">关于</f-nav-item>
+      <f-nav-item name="hire">招聘</f-nav-item>
+    </f-nav>
   </div>
 </template>
 <script>
-  import FSlides from './slides/slides'
-  import FSlidesItem from './slides/slides-item'
+  import FNav from './nav/nav.vue'
+  import FNavItem from './nav/nav-item.vue'
+  import FSubNav from './nav/sub-nav.vue'
 
   export default {
     name: 'demo',
-    components: { FSlides, FSlidesItem },
+    components: { FNav, FNavItem, FSubNav },
     data() {
       return {
-        selected: undefined
+        selected: ['home']
       }
-    },
-    created() {}
+    }
   }
 </script>
 <style>
@@ -33,17 +27,5 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  .wrapper {
-    margin: 40px;
-  }
-  .box {
-    width: 100%;
-    height: 350px;
-    background: #ddd;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
   }
 </style>
