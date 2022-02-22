@@ -1,6 +1,11 @@
 <template>
   <div class="wrapper" :class="{ error }">
-    <input :value="value" type="text" :disabled="disabled" :readonly="readonly"
+    <input
+      ref="input"
+      :value="value"
+      type="text"
+      :disabled="disabled"
+      :readonly="readonly"
       @change="$emit('change', $event.target.value)"
       @input="$emit('input', $event.target.value)"
       @focus="$emit('focus', $event.target.value)"
@@ -12,16 +17,15 @@
     </template>
   </div>
 </template>
-
 <script>
-  import Icon from './icon.vue'
+  import Icon from './icon'
 
   export default {
-    name: 'FeelInput',
     components: { Icon },
+    name: 'FeelInput',
     props: {
       value: {
-        type: String
+        type: [String, Date]
       },
       disabled: {
         type: Boolean,
@@ -34,18 +38,16 @@
       error: {
         type: String
       }
+    },
+    methods: {
+      setRawValue(value) {
+        this.$refs.input.value = value
+      }
     }
   }
 </script>
-
 <style lang="scss" scoped>
-  $height: 32px;
-  $border-color: #999;
-  $border-color-hover: #666;
-  $border-radius: 4px;
-  $font-size: 12px;
-  $box-shadow-color: rgba(0, 0, 0, 0.5);
-  $red: #e81123;
+  @import 'var';
   .wrapper {
     font-size: $font-size;
     display: inline-flex;

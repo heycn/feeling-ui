@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper" :class="toastClasses">
+  <div class="feel-toast" :class="toastClasses">
     <div class="toast" ref="toast">
       <div class="message">
         <slot v-if="!enableHtml"></slot>
@@ -12,7 +12,6 @@
     </div>
   </div>
 </template>
-
 <script>
   //构造组件的选项
   export default {
@@ -84,8 +83,7 @@
     }
   }
 </script>
-
-<style lang="scss" scoped>
+<style scoped lang="scss">
   $font-size: 14px;
   $toast-min-height: 40px;
   $toast-bg: rgba(0, 0, 0, 0.75);
@@ -117,7 +115,7 @@
       opacity: 1;
     }
   }
-  .wrapper {
+  .feel-toast {
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
