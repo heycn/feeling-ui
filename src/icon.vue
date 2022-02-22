@@ -1,9 +1,8 @@
 <template>
-  <svg class="f-icon">
+  <svg class="f-icon" @click="$emit('click', $event)">
     <use :xlink:href="`#i-${name}`"></use>
   </svg>
 </template>
-
 <script>
   import './svg'
   export default {
@@ -11,7 +10,6 @@
     props: ['name']
   }
 </script>
-
 <style lang="scss" scoped>
   .f-icon {
     width: 1em;
