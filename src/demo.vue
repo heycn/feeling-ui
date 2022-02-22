@@ -1,7 +1,7 @@
 <template>
   <div>
     <f-nav :selected.sync="selected" style="margin: 20px">
-      <f-nav-item name="home"> 首页 </f-nav-item>
+      <f-nav-item name="home">首页</f-nav-item>
       <f-sub-nav name="about">
         <template slot="title">关于</template>
         <f-nav-item name="culture">企业文化</f-nav-item>
