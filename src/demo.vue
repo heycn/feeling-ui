@@ -1,6 +1,6 @@
 <template>
   <div style="margin: 20px">
-    <f-pager :total-page="20" :current-page="20"></f-pager>
+    <f-pager :total-page="10" :current-page.sync="currentPage"></f-pager>
   </div>
 </template>
 <script>
@@ -8,7 +8,12 @@
 
   export default {
     name: 'demo',
-    components: { FPager }
+    components: { FPager },
+    data() {
+      return {
+        currentPage: 1
+      }
+    }
   }
 </script>
 <style>
