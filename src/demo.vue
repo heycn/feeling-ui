@@ -1,74 +1,70 @@
 <template>
-  <div>
-    <f-nav :selected.sync="selected" style="margin: 20px">
-      <f-nav-item name="home">首页</f-nav-item>
-      <f-sub-nav name="about">
-        <template slot="title">关于</template>
-        <f-nav-item name="culture">企业文化</f-nav-item>
-        <f-nav-item name="developers">开发团队</f-nav-item>
-        <f-sub-nav name="contacts">
-          <template slot="title">联系方式</template>
-          <f-nav-item name="wechat">微信</f-nav-item>
-          <f-nav-item name="qq">QQ</f-nav-item>
-          <f-sub-nav name="phone">
-            <template slot="title">手机</template>
-            <f-nav-item name="cm">移动</f-nav-item>
-            <f-nav-item name="cu">联通</f-nav-item>
-            <f-nav-item name="cn">电信</f-nav-item>
-          </f-sub-nav>
-        </f-sub-nav>
-      </f-sub-nav>
-      <f-nav-item name="hire">招聘</f-nav-item>
-    </f-nav>
-    <f-nav :selected.sync="selected" vertical style="width: 200px; margin: 20px; margin-top: 200px">
-      <f-nav-item name="home">首页</f-nav-item>
-      <f-sub-nav name="about">
-        <template slot="title">关于</template>
-        <f-nav-item name="culture">企业文化</f-nav-item>
-        <f-nav-item name="developers">开发团队</f-nav-item>
-        <f-sub-nav name="contacts">
-          <template slot="title">联系方式</template>
-          <f-nav-item name="wechat">微信</f-nav-item>
-          <f-nav-item name="qq">QQ</f-nav-item>
-          <f-sub-nav name="phone">
-            <template slot="title">手机</template>
-            <f-nav-item name="cm">移动</f-nav-item>
-            <f-nav-item name="cu">联通</f-nav-item>
-            <f-nav-item name="cn">电信</f-nav-item>
-          </f-sub-nav>
-        </f-sub-nav>
-      </f-sub-nav>
-      <f-nav-item name="hire">招聘</f-nav-item>
-    </f-nav>
-    <p>用户选中了 {{ selected }}</p>
+  <div class="form-wrapper">
+    <form class="form" @submit.prevent="onSubmit">
+      <h1>登录</h1>
+      <demo-form-row label="邮箱" :error="errors.email">
+        <f-input type="text" v-model="user.email"></f-input>
+      </demo-form-row>
+      <demo-form-row label="密码" :error="errors.password">
+        <f-input type="password" v-model="user.password"></f-input>
+      </demo-form-row>
+      <div>
+        <f-button class="ok" type="submit">提交</f-button>
+      </div>
+    </form>
   </div>
 </template>
+<style>
+  body {
+    background: #888;
+  }
+</style>
+<style scoped lang="scss">
+  .form {
+    background: white;
+    padding: 24px;
+    border-radius: 8px;
+    margin-top: 36px;
+    min-height: 60vh;
+    &-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+    .controls {
+    }
+    .ok {
+      display: block;
+      width: 100%;
+      margin-top: 24px;
+    }
+  }
+</style>
 <script>
-  import FNav from './nav/nav.vue'
-  import FNavItem from './nav/nav-item.vue'
-  import FSubNav from './nav/sub-nav.vue'
+  import FButton from './button/button'
+  import FInput from './input'
+  import DemoFormRow from './demo-form-row'
+  import formMixin from './form-mixin'
 
   export default {
     name: 'demo',
-    components: { FNav, FNavItem, FSubNav },
+    components: { FButton, FInput, DemoFormRow },
+    mixins: [formMixin],
     data() {
       return {
-        selected: 'culture'
+        user: {
+          email: '',
+          password: ''
+        },
+        rules: [
+          { key: 'email', pattern: 'email', required: true },
+          { key: 'password', minLength: 6, required: true }
+        ]
       }
     },
     methods: {
-      onChange(selected) {
-        console.log(selected)
-        if (selected.indexOf('home') >= 0) {
-          alert('hi')
-        }
-      }
-    },
-    watch: {
-      selected(newValue) {
-        if (newValue === 'home') {
-          alert('hi')
-        }
+      onSubmit() {
+        this.validate(this.user)
+        console.log(this.errors)
       }
     }
   }
